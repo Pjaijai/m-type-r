@@ -249,7 +249,6 @@ footer a {
 .hk-land {
   fill: var(--land);
   stroke: var(--land-stroke);
-  stroke-width: 1;
 }
 
 .hk-route polyline {
@@ -273,15 +272,10 @@ footer a {
 .hk-station {
   fill: var(--surface);
   stroke: var(--line-color, var(--accent));
-  stroke-width: 2;
 }
 
 .hk-station.done {
   fill: var(--line-color, var(--accent));
-}
-
-.hk-station.current {
-  stroke-width: 3;
 }
 
 .hk-train {

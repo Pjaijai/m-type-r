@@ -47,6 +47,8 @@ export function HKMap({
     mapModel.routes.find((route) => route.id === selectedLineId) ??
     null;
   const hasSelection = Boolean(selectedRoute);
+  // Keep lines, dots and the train the same size on screen at any zoom.
+  const unitScale = width / 700;
 
   return (
     <svg
@@ -55,7 +57,11 @@ export function HKMap({
       role="img"
       aria-label="Hong Kong MTR map"
     >
-      <path className="hk-land" d={mapModel.boundaryPath} />
+      <path
+        className="hk-land"
+        d={mapModel.boundaryPath}
+        strokeWidth={unitScale}
+      />
       {mapModel.routes.map((route) => {
         const isSelected = !overlayRoute && route.id === selectedLineId;
         const dimmed = hasSelection && !isSelected;
@@ -69,7 +75,7 @@ export function HKMap({
                 key={index}
                 points={pointsToString(points)}
                 stroke={route.color}
-                strokeWidth={isSelected ? 4 : 2.6}
+                strokeWidth={(isSelected ? 4 : 2.6) * unitScale}
               />
             ))}
             {onSelectLine
@@ -92,7 +98,7 @@ export function HKMap({
               key={index}
               points={pointsToString(points)}
               stroke={overlayRoute.color}
-              strokeWidth={4}
+              strokeWidth={4 * unitScale}
             />
           ))}
         </g>
@@ -109,7 +115,8 @@ export function HKMap({
                 className={`hk-station${isCurrent ? " current" : ""}${isDone ? " done" : ""}`}
                 cx={point[0]}
                 cy={point[1]}
-                r={isCurrent ? 6 : 4}
+                r={(isCurrent ? 6 : 4) * unitScale}
+                strokeWidth={(isCurrent ? 3 : 2) * unitScale}
                 style={{ "--line-color": selectedRoute.color }}
               />
             );

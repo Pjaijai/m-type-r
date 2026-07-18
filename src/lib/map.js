@@ -98,6 +98,31 @@ export function getRouteViewBox(
   ];
 }
 
+// Frames a small set of points (current + next station) for the in-game
+// tracking camera. minimumWidth keeps it from zooming in absurdly close.
+export function getPairViewBox(
+  points,
+  minimumWidth = 210,
+  padding = 52,
+  verticalOffsetRatio = 0,
+) {
+  if (!points.length) return MAP_VIEWBOX;
+  const xs = points.map(([x]) => x);
+  const ys = points.map(([, y]) => y);
+  const minX = Math.min(...xs);
+  const maxX = Math.max(...xs);
+  const minY = Math.min(...ys);
+  const maxY = Math.max(...ys);
+  const width = Math.max(maxX - minX + padding * 2, minimumWidth);
+  const height = Math.max(maxY - minY + padding * 2, width * 0.62);
+  return [
+    (minX + maxX - width) / 2,
+    (minY + maxY - height) / 2 + height * verticalOffsetRatio,
+    width,
+    height,
+  ];
+}
+
 export function pointsToString(points) {
   return points.map(([x, y]) => `${x.toFixed(2)},${y.toFixed(2)}`).join(" ");
 }

@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import { ChevronDown, ChevronLeft, ChevronUp } from "lucide-react";
 import { HKMap } from "./HKMap";
-import { getRouteViewBox } from "../lib/map";
+import { getPairViewBox, getRouteViewBox } from "../lib/map";
 import { TYPING_LANGUAGES } from "../lib/typing";
 import { UI_LOCALES } from "../lib/i18n";
 
@@ -29,9 +29,21 @@ export function GameScreen({
   const useZh = locale === UI_LOCALES.ZH;
   const route =
     overlayRoute ?? mapModel.routes.find((r) => r.id === line.id);
-  const viewBox = useMemo(() => getRouteViewBox(route, 320, 64, 0.16), [route]);
   const station = stations[stationIndex];
   const nextStation = stations[(stationIndex + 1) % stations.length];
+  // Tracking camera: frame the current stop and its neighbour (the previous
+  // one at the end of the line), falling back to the whole route.
+  const viewBox = useMemo(() => {
+    const neighbour =
+      stations[stationIndex + 1] ?? stations[stationIndex - 1] ?? null;
+    const points = [station, neighbour]
+      .filter(Boolean)
+      .map((s) => route?.pointsById.get(s.id))
+      .filter(Boolean);
+    return points.length
+      ? getPairViewBox(points, 130, 36, 0.16)
+      : getRouteViewBox(route, 320, 64, 0.16);
+  }, [route, station, stationIndex, stations]);
   const completedIds = useMemo(
     () => new Set(stations.slice(0, stationIndex).map((s) => s.id)),
     [stations, stationIndex],
