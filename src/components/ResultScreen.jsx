@@ -1,4 +1,4 @@
-import { RotateCcw, TramFront } from "lucide-react";
+import { TramFront } from "lucide-react";
 
 export function ResultScreen({
   t,
@@ -34,7 +34,6 @@ export function ResultScreen({
         </div>
         <div className="result-actions">
           <button type="button" className="start-button" onClick={onRetry}>
-            <RotateCcw size={16} />
             {t("retry")}
           </button>
           <button type="button" className="ghost-button" onClick={onBack}>

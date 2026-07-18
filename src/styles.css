@@ -775,6 +775,11 @@ footer a {
   justify-content: center;
 }
 
+.result-actions .start-button {
+  padding: 12px 18px;
+  font-size: 15px;
+}
+
 /* ---------- responsive ---------- */
 
 @media (max-width: 820px) {
