@@ -53,5 +53,12 @@ Station coordinates are matched from OSM by English name; add entries to
 `data/coordinate-overrides.json` (`{"STATION_CODE": {"lat": ..., "lon": ...}}`)
 to pin any station manually.
 
+## License
+
+Code is released under the [MIT License](./LICENSE). The map and station
+data keep their own upstream terms: MTR open data under the
+[DATA.GOV.HK](https://data.gov.hk/) terms of use, and OpenStreetMap-derived
+data under the [ODbL](https://www.openstreetmap.org/copyright).
+
 This is not an official MTR service. For typing practice only.
 本網站並非港鐵官方服務，僅供打字練習使用。
