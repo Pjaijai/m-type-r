@@ -48,6 +48,12 @@ export function GameScreen({
     () => new Set(stations.slice(0, stationIndex).map((s) => s.id)),
     [stations, stationIndex],
   );
+  // Pressing start flies the camera in from the whole route to the first
+  // station; keep the initial frame stable across re-renders.
+  const routeViewBox = useMemo(
+    () => getRouteViewBox(route, 320, 64, 0.16),
+    [route],
+  );
   const targetCharacters = [...target];
   const [collapsed, setCollapsed] = useState(false);
 
@@ -63,6 +69,7 @@ export function GameScreen({
         <HKMap
           mapModel={mapModel}
           viewBox={viewBox}
+          initialViewBox={routeViewBox}
           selectedLineId={line.id}
           overlayRoute={overlayRoute}
           activeStationIds={stations.map((s) => s.id)}

@@ -4,10 +4,11 @@ import { pointsToString } from "../lib/map";
 const ZOOM_MS = 550;
 
 // Animates viewBox changes so selecting a line glides into its route
-// instead of jumping. Starts at the target, so mounting never animates.
-function useAnimatedViewBox(target) {
-  const [current, setCurrent] = useState(target);
-  const currentRef = useRef(target);
+// instead of jumping. Starts at `initial` when given (fly-in on mount),
+// otherwise at the target so mounting doesn't animate.
+function useAnimatedViewBox(target, initial = null) {
+  const [current, setCurrent] = useState(initial ?? target);
+  const currentRef = useRef(initial ?? target);
   const frameRef = useRef(0);
   const key = target.join(",");
   useEffect(() => {
@@ -39,9 +40,10 @@ export function HKMap({
   currentStationId = null,
   completedStationIds = null,
   trainShake = false,
+  initialViewBox = null,
   className = "",
 }) {
-  const [x, y, width, height] = useAnimatedViewBox(viewBox);
+  const [x, y, width, height] = useAnimatedViewBox(viewBox, initialViewBox);
   const selectedRoute =
     overlayRoute ??
     mapModel.routes.find((route) => route.id === selectedLineId) ??
