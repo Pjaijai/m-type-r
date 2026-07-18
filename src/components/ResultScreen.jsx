@@ -40,6 +40,7 @@ export function ResultScreen({
             {t("backHome")}
           </button>
         </div>
+        <p className="start-hint">{t("resultHint")}</p>
       </div>
     </section>
   );

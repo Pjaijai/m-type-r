@@ -161,6 +161,7 @@ export function HomeScreen({
                 </button>
               ))}
             </div>
+            <p className="start-hint island-hint">{t("homeHint")}</p>
           </>
         ) : null}
         {journeyOpen ? (
@@ -300,7 +301,10 @@ export function HomeScreen({
               </div>
               {typingLanguageGroup}
             </div>
-            <p className="start-hint">{t("startHint")}</p>
+            <p className="start-hint">
+              {t("lineHint")}
+              {runs.length > 1 ? ` · ${t("runHint")}` : ""}
+            </p>
           </>
         ) : null}
       </div>

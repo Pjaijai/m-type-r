@@ -7,6 +7,7 @@ import { buildJourneyRoute, buildMapModel, JOURNEY_COLOR } from "./lib/map";
 import {
   buildNetwork,
   findJourney,
+  getLineRuns,
   getPlayableStations,
   ROUTE_DIRECTIONS,
 } from "./lib/data";
@@ -329,19 +330,58 @@ export default function App() {
   useEffect(() => {
     const onKeyDown = (event) => {
       if (event.isComposing || event.keyCode === 229) return;
+      const tag = event.target.tagName;
+      // Letters typed into a select drive its native type-ahead; Enter on a
+      // focused control should activate that control, not the shortcut.
+      const inFormField =
+        tag === "SELECT" || tag === "INPUT" || tag === "TEXTAREA";
+      const onControl = inFormField || Boolean(event.target.closest?.("button, a"));
       if (event.key === "Escape") {
-        if (screen === "game") backToHome();
+        if (screen === "game" || screen === "result") backToHome();
         else if (screen === "home" && (selectedLineId || journeyOpen))
           clearLine();
         return;
       }
-      if (
-        screen === "home" &&
-        event.key === "Enter" &&
-        stations.length > 1 &&
-        event.target.tagName !== "SELECT"
-      ) {
-        startGame();
+      if (screen === "result") {
+        if (event.key === "Enter" && !onControl) startGame();
+        return;
+      }
+      if (screen === "home") {
+        if (event.key === "Enter") {
+          if (!onControl && stations.length > 1) startGame();
+          return;
+        }
+        if (inFormField || event.metaKey || event.ctrlKey || event.altKey)
+          return;
+        const key = event.key.toLowerCase();
+        if (key === "j") {
+          openJourney();
+          return;
+        }
+        if (/^\d$/.test(key) && data) {
+          const line = data.lines[key === "0" ? 9 : Number(key) - 1];
+          if (line) selectLine(line.id);
+          return;
+        }
+        if (!selectedLineId) return;
+        if (key === "d") {
+          setDirection((value) =>
+            value === ROUTE_DIRECTIONS.FORWARD
+              ? ROUTE_DIRECTIONS.REVERSE
+              : ROUTE_DIRECTIONS.FORWARD,
+          );
+        } else if (key === "m") {
+          setMode((value) => (value === "timed" ? "line" : "timed"));
+        } else if (key === "t") {
+          setTypingLanguage((value) =>
+            value === TYPING_LANGUAGES.ENGLISH
+              ? TYPING_LANGUAGES.CHINESE
+              : TYPING_LANGUAGES.ENGLISH,
+          );
+        } else if (key === "r") {
+          const runCount = getLineRuns(selectedLine).length;
+          if (runCount > 1) selectRun((runIndex + 1) % runCount);
+        }
         return;
       }
       if (
@@ -367,8 +407,14 @@ export default function App() {
   }, [
     backToHome,
     clearLine,
+    data,
     journeyOpen,
+    openJourney,
+    runIndex,
     screen,
+    selectLine,
+    selectRun,
+    selectedLine,
     selectedLineId,
     startGame,
     stations,
