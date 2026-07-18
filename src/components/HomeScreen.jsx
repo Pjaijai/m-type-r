@@ -1,6 +1,6 @@
 import { ArrowLeftRight, ChevronLeft, Play } from "lucide-react";
 import { HKMap } from "./HKMap";
-import { getRouteViewBox, MAP_VIEWBOX } from "../lib/map";
+import { getRouteViewBox, JOURNEY_COLOR, MAP_VIEWBOX } from "../lib/map";
 import {
   getLineRuns,
   getPlayableStations,
@@ -16,6 +16,14 @@ export function HomeScreen({
   mapModel,
   lines,
   selectedLine,
+  journeyOpen,
+  journeyFrom,
+  journeyTo,
+  journeyStations,
+  journeyRoute,
+  onJourneyOpen,
+  onJourneyFromChange,
+  onJourneyToChange,
   runIndex,
   onRunChange,
   direction,
@@ -29,15 +37,69 @@ export function HomeScreen({
   onStart,
 }) {
   const useZh = locale === UI_LOCALES.ZH;
+  const stationName = (station) => (useZh ? station.nameZh : station.nameEn);
   const selectedRoute =
     mapModel.routes.find((route) => route.id === selectedLine?.id) ?? null;
-  const viewBox = selectedRoute
-    ? getRouteViewBox(selectedRoute, 320, 64)
-    : MAP_VIEWBOX;
+  const viewBox = journeyRoute
+    ? getRouteViewBox(journeyRoute, 320, 64)
+    : selectedRoute
+      ? getRouteViewBox(selectedRoute, 320, 64)
+      : MAP_VIEWBOX;
   const runs = selectedLine ? getLineRuns(selectedLine) : [];
-  const playable = selectedLine
-    ? getPlayableStations(selectedLine, runIndex, direction)
-    : [];
+  const playable = journeyOpen
+    ? journeyStations
+    : selectedLine
+      ? getPlayableStations(selectedLine, runIndex, direction)
+      : [];
+  const journeyReady = journeyOpen && journeyStations.length > 1;
+
+  const typingLanguageGroup = (
+    <div className="island-group">
+      <span className="island-label">{t("typingLanguage")}</span>
+      <div className="option-row">
+        <button
+          type="button"
+          className={`option-button${
+            typingLanguage === TYPING_LANGUAGES.ENGLISH ? " active" : ""
+          }`}
+          onClick={() => onTypingLanguageChange(TYPING_LANGUAGES.ENGLISH)}
+        >
+          {t("typingEn")}
+        </button>
+        <button
+          type="button"
+          className={`option-button${
+            typingLanguage === TYPING_LANGUAGES.CHINESE ? " active" : ""
+          }`}
+          onClick={() => onTypingLanguageChange(TYPING_LANGUAGES.CHINESE)}
+        >
+          {t("typingZh")}
+        </button>
+      </div>
+    </div>
+  );
+
+  const stationSelect = (value, onChange, label) => (
+    <div className="island-group">
+      <span className="island-label">{label}</span>
+      <select
+        className="station-select"
+        value={value}
+        onChange={(event) => onChange(event.target.value)}
+      >
+        <option value="">{t("pickStation")}</option>
+        {lines.map((line) => (
+          <optgroup key={line.id} label={useZh ? line.nameZh : line.nameEn}>
+            {line.stations.map((station) => (
+              <option key={station.id} value={station.id}>
+                {stationName(station)}
+              </option>
+            ))}
+          </optgroup>
+        ))}
+      </select>
+    </div>
+  );
 
   return (
     <section className="landing">
@@ -47,6 +109,7 @@ export function HomeScreen({
           viewBox={viewBox}
           selectedLineId={selectedLine?.id ?? null}
           onSelectLine={onSelect}
+          overlayRoute={journeyOpen ? journeyRoute : null}
           activeStationIds={playable.map((station) => station.id)}
           currentStationId={null}
         />
@@ -65,13 +128,24 @@ export function HomeScreen({
         </a>
       </p>
       <div className="island">
-        {!selectedLine ? (
+        {!selectedLine && !journeyOpen ? (
           <>
             <div className="island-title">
               <h1>{t("appName")}</h1>
               <p>{t("tagline")}</p>
             </div>
             <div className="line-strip">
+              <button
+                type="button"
+                className="line-pill journey-pill"
+                style={{ "--line-color": JOURNEY_COLOR }}
+                onClick={onJourneyOpen}
+              >
+                <span className="line-chip" style={{ background: JOURNEY_COLOR }}>
+                  ⇄
+                </span>
+                {t("journey")}
+              </button>
               {lines.map((line) => (
                 <button
                   key={line.id}
@@ -88,7 +162,52 @@ export function HomeScreen({
               ))}
             </div>
           </>
-        ) : (
+        ) : null}
+        {journeyOpen ? (
+          <>
+            <div className="island-head">
+              <button
+                type="button"
+                className="back-button"
+                onClick={onClear}
+                aria-label={t("backToLines")}
+              >
+                <ChevronLeft size={18} />
+              </button>
+              <span
+                className="line-chip large"
+                style={{ background: JOURNEY_COLOR }}
+              >
+                ⇄
+              </span>
+              <span className="line-names">
+                <strong>{t("journeyTitle")}</strong>
+                <small>
+                  {journeyReady
+                    ? `${journeyStations.length} ${t("stations")}`
+                    : t("journeyHint")}
+                </small>
+              </span>
+              <button
+                type="button"
+                className="start-button"
+                style={{ "--line-color": JOURNEY_COLOR }}
+                onClick={onStart}
+                disabled={!journeyReady}
+              >
+                <Play size={15} />
+                {t("start")}
+              </button>
+            </div>
+            <div className="island-controls">
+              {stationSelect(journeyFrom, onJourneyFromChange, t("from"))}
+              {stationSelect(journeyTo, onJourneyToChange, t("to"))}
+              {typingLanguageGroup}
+            </div>
+            <p className="start-hint">{t("startHint")}</p>
+          </>
+        ) : null}
+        {selectedLine ? (
           <>
             <div className="island-head">
               <button
@@ -154,11 +273,9 @@ export function HomeScreen({
                 >
                   <ArrowLeftRight size={14} />
                   {playable.length
-                    ? `${useZh ? playable[0].nameZh : playable[0].nameEn} → ${
-                        useZh
-                          ? playable[playable.length - 1].nameZh
-                          : playable[playable.length - 1].nameEn
-                      }`
+                    ? `${stationName(playable[0])} → ${stationName(
+                        playable[playable.length - 1],
+                      )}`
                     : ""}
                 </button>
               </div>
@@ -181,37 +298,11 @@ export function HomeScreen({
                   </button>
                 </div>
               </div>
-              <div className="island-group">
-                <span className="island-label">{t("typingLanguage")}</span>
-                <div className="option-row">
-                  <button
-                    type="button"
-                    className={`option-button${
-                      typingLanguage === TYPING_LANGUAGES.ENGLISH ? " active" : ""
-                    }`}
-                    onClick={() =>
-                      onTypingLanguageChange(TYPING_LANGUAGES.ENGLISH)
-                    }
-                  >
-                    {t("typingEn")}
-                  </button>
-                  <button
-                    type="button"
-                    className={`option-button${
-                      typingLanguage === TYPING_LANGUAGES.CHINESE ? " active" : ""
-                    }`}
-                    onClick={() =>
-                      onTypingLanguageChange(TYPING_LANGUAGES.CHINESE)
-                    }
-                  >
-                    {t("typingZh")}
-                  </button>
-                </div>
-              </div>
+              {typingLanguageGroup}
             </div>
             <p className="start-hint">{t("startHint")}</p>
           </>
-        )}
+        ) : null}
       </div>
     </section>
   );

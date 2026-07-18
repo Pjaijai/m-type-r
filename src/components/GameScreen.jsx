@@ -10,6 +10,7 @@ export function GameScreen({
   locale,
   mapModel,
   line,
+  overlayRoute = null,
   stations,
   mode,
   stationIndex,
@@ -26,7 +27,8 @@ export function GameScreen({
   onFocusTyping,
 }) {
   const useZh = locale === UI_LOCALES.ZH;
-  const route = mapModel.routes.find((r) => r.id === line.id);
+  const route =
+    overlayRoute ?? mapModel.routes.find((r) => r.id === line.id);
   const viewBox = useMemo(() => getRouteViewBox(route), [route]);
   const station = stations[stationIndex];
   const nextStation = stations[(stationIndex + 1) % stations.length];
@@ -75,6 +77,7 @@ export function GameScreen({
           mapModel={mapModel}
           viewBox={viewBox}
           selectedLineId={line.id}
+          overlayRoute={overlayRoute}
           activeStationIds={stations.map((s) => s.id)}
           currentStationId={station?.id ?? null}
           completedStationIds={completedIds}

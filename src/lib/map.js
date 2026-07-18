@@ -17,6 +17,8 @@ const HK_BOUNDS = {
   ],
 };
 
+export const JOURNEY_COLOR = "#e6007e";
+
 export function buildMapModel(boundaryFeature, lines) {
   const projection = geoMercator().fitExtent(
     [
@@ -47,7 +49,26 @@ export function buildMapModel(boundaryFeature, lines) {
     return { ...line, pointsById, segments, stations };
   });
 
-  return { boundaryPath, routes };
+  const pointsById = new Map();
+  for (const route of routes)
+    for (const [id, point] of route.pointsById)
+      if (!pointsById.has(id)) pointsById.set(id, point);
+
+  return { boundaryPath, routes, pointsById };
+}
+
+// A route-shaped overlay for a cross-line journey, drawable by HKMap.
+export function buildJourneyRoute(mapModel, stationIds) {
+  const points = stationIds
+    .map((id) => mapModel.pointsById.get(id))
+    .filter(Boolean);
+  if (points.length < 2) return null;
+  return {
+    id: "journey",
+    color: JOURNEY_COLOR,
+    segments: [points],
+    pointsById: mapModel.pointsById,
+  };
 }
 
 export function getRouteViewBox(route, minimumWidth = 320, padding = 48) {

@@ -34,6 +34,7 @@ export function HKMap({
   viewBox,
   selectedLineId = null,
   onSelectLine = null,
+  overlayRoute = null,
   activeStationIds = null,
   currentStationId = null,
   completedStationIds = null,
@@ -41,7 +42,9 @@ export function HKMap({
 }) {
   const [x, y, width, height] = useAnimatedViewBox(viewBox);
   const selectedRoute =
-    mapModel.routes.find((route) => route.id === selectedLineId) ?? null;
+    overlayRoute ??
+    mapModel.routes.find((route) => route.id === selectedLineId) ??
+    null;
   const hasSelection = Boolean(selectedRoute);
 
   return (
@@ -53,7 +56,7 @@ export function HKMap({
     >
       <path className="hk-land" d={mapModel.boundaryPath} />
       {mapModel.routes.map((route) => {
-        const isSelected = route.id === selectedLineId;
+        const isSelected = !overlayRoute && route.id === selectedLineId;
         const dimmed = hasSelection && !isSelected;
         return (
           <g
@@ -81,6 +84,18 @@ export function HKMap({
           </g>
         );
       })}
+      {overlayRoute ? (
+        <g className="hk-route selected">
+          {overlayRoute.segments.map((points, index) => (
+            <polyline
+              key={index}
+              points={pointsToString(points)}
+              stroke={overlayRoute.color}
+              strokeWidth={4}
+            />
+          ))}
+        </g>
+      ) : null}
       {selectedRoute && activeStationIds
         ? activeStationIds.map((stationId) => {
             const point = selectedRoute.pointsById.get(stationId);

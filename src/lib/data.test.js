@@ -1,5 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
+  buildNetwork,
+  findJourney,
   getLineRuns,
   getPlayableStations,
   getRunLabel,
@@ -48,6 +50,57 @@ describe("getRunLabel", () => {
     const runs = getLineRuns(tkl);
     expect(getRunLabel(runs[1], false)).toBe("North Point → LOHAS Park");
     expect(getRunLabel(runs[1], true)).toBe("北角 → 康城");
+  });
+});
+
+describe("buildNetwork / findJourney", () => {
+  const station = (id) => ({ id, nameZh: id, nameEn: id });
+  const lines = [
+    {
+      code: "AA",
+      stations: ["A1", "A2", "X", "A3"].map(station),
+      segments: [["A1", "A2", "X", "A3"]],
+    },
+    {
+      code: "BB",
+      stations: ["B1", "X", "B2"].map(station),
+      segments: [["B1", "X", "B2"]],
+    },
+    {
+      code: "CC",
+      stations: ["CEN", "C2"].map(station),
+      segments: [["CEN", "C2"]],
+    },
+    {
+      code: "DD",
+      stations: ["HOK", "D2"].map(station),
+      segments: [["HOK", "D2"]],
+    },
+  ];
+  const network = buildNetwork(lines);
+
+  it("routes across lines through a shared interchange", () => {
+    const path = findJourney(network, "A1", "B2");
+    expect(path.map((s) => s.id)).toEqual(["A1", "A2", "X", "B2"]);
+  });
+
+  it("uses walking interchanges", () => {
+    const path = findJourney(network, "C2", "D2");
+    expect(path.map((s) => s.id)).toEqual(["C2", "CEN", "HOK", "D2"]);
+  });
+
+  it("returns empty for same or unknown stations", () => {
+    expect(findJourney(network, "A1", "A1")).toEqual([]);
+    expect(findJourney(network, "A1", "ZZ")).toEqual([]);
+    expect(findJourney(network, "", "A1")).toEqual([]);
+  });
+
+  it("returns empty when no path exists", () => {
+    const isolated = buildNetwork([
+      { code: "EE", stations: ["E1", "E2"].map(station), segments: [["E1", "E2"]] },
+      { code: "FF", stations: ["F1", "F2"].map(station), segments: [["F1", "F2"]] },
+    ]);
+    expect(findJourney(isolated, "E1", "F2")).toEqual([]);
   });
 });
 

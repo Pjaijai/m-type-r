@@ -3,8 +3,13 @@ import { Languages, Moon, Sun } from "lucide-react";
 import { HomeScreen } from "./components/HomeScreen";
 import { GameScreen } from "./components/GameScreen";
 import { ResultScreen } from "./components/ResultScreen";
-import { buildMapModel } from "./lib/map";
-import { getPlayableStations, ROUTE_DIRECTIONS } from "./lib/data";
+import { buildJourneyRoute, buildMapModel, JOURNEY_COLOR } from "./lib/map";
+import {
+  buildNetwork,
+  findJourney,
+  getPlayableStations,
+  ROUTE_DIRECTIONS,
+} from "./lib/data";
 import {
   getTypingTarget,
   isTypingCharacterMatch,
@@ -19,6 +24,14 @@ import {
 } from "./lib/i18n";
 
 const TIMED_MS = 30000;
+
+const JOURNEY_LINE = {
+  id: "journey",
+  code: "⇄",
+  nameZh: "自由行程",
+  nameEn: "Journey",
+  color: JOURNEY_COLOR,
+};
 
 function useNetworkData() {
   const [state, setState] = useState({ data: null, boundary: null, error: null });
@@ -64,6 +77,9 @@ export default function App() {
 
   const [screen, setScreen] = useState("home");
   const [selectedLineId, setSelectedLineId] = useState(null);
+  const [journeyOpen, setJourneyOpen] = useState(false);
+  const [journeyFrom, setJourneyFrom] = useState("");
+  const [journeyTo, setJourneyTo] = useState("");
   const [runIndex, setRunIndex] = useState(0);
   const [direction, setDirection] = useState(ROUTE_DIRECTIONS.FORWARD);
   const [mode, setMode] = useState("timed");
@@ -92,9 +108,31 @@ export default function App() {
 
   const selectedLine =
     data?.lines.find((line) => line.id === selectedLineId) ?? null;
+  const network = useMemo(
+    () => (data ? buildNetwork(data.lines) : null),
+    [data],
+  );
+  const journeyStations = useMemo(
+    () => (network ? findJourney(network, journeyFrom, journeyTo) : []),
+    [network, journeyFrom, journeyTo],
+  );
   const stations = useMemo(
-    () => getPlayableStations(selectedLine, runIndex, direction),
-    [selectedLine, runIndex, direction],
+    () =>
+      journeyOpen
+        ? journeyStations
+        : getPlayableStations(selectedLine, runIndex, direction),
+    [journeyOpen, journeyStations, selectedLine, runIndex, direction],
+  );
+  const activeLine = journeyOpen ? JOURNEY_LINE : selectedLine;
+  const journeyRoute = useMemo(
+    () =>
+      journeyOpen && mapModel && journeyStations.length > 1
+        ? buildJourneyRoute(
+            mapModel,
+            journeyStations.map((station) => station.id),
+          )
+        : null,
+    [journeyOpen, mapModel, journeyStations],
   );
 
   const attempts = correct + errors;
@@ -137,6 +175,7 @@ export default function App() {
   }, []);
 
   const selectLine = useCallback((lineId) => {
+    setJourneyOpen(false);
     setSelectedLineId(lineId);
     setRunIndex(0);
     setDirection(ROUTE_DIRECTIONS.FORWARD);
@@ -145,8 +184,15 @@ export default function App() {
 
   const clearLine = useCallback(() => {
     setSelectedLineId(null);
+    setJourneyOpen(false);
     setRunIndex(0);
     setDirection(ROUTE_DIRECTIONS.FORWARD);
+  }, []);
+
+  const openJourney = useCallback(() => {
+    setSelectedLineId(null);
+    setJourneyOpen(true);
+    setMode("line");
   }, []);
 
   const selectRun = useCallback((index) => {
@@ -155,7 +201,7 @@ export default function App() {
   }, []);
 
   const startGame = useCallback(() => {
-    if (!selectedLine) return;
+    if (stations.length < 2) return;
     resetTypingInput();
     gameActiveRef.current = true;
     typedIndexRef.current = 0;
@@ -169,7 +215,7 @@ export default function App() {
     startTimeRef.current = performance.now();
     setScreen("game");
     typingInputRef.current?.focus({ preventScroll: true });
-  }, [resetTypingInput, selectedLine]);
+  }, [resetTypingInput, stations.length]);
 
   const backToHome = useCallback(() => {
     gameActiveRef.current = false;
@@ -285,10 +331,16 @@ export default function App() {
       if (event.isComposing || event.keyCode === 229) return;
       if (event.key === "Escape") {
         if (screen === "game") backToHome();
-        else if (screen === "home" && selectedLineId) clearLine();
+        else if (screen === "home" && (selectedLineId || journeyOpen))
+          clearLine();
         return;
       }
-      if (screen === "home" && event.key === "Enter" && selectedLineId) {
+      if (
+        screen === "home" &&
+        event.key === "Enter" &&
+        stations.length > 1 &&
+        event.target.tagName !== "SELECT"
+      ) {
         startGame();
         return;
       }
@@ -315,6 +367,7 @@ export default function App() {
   }, [
     backToHome,
     clearLine,
+    journeyOpen,
     screen,
     selectedLineId,
     startGame,
@@ -405,6 +458,14 @@ export default function App() {
             mapModel={mapModel}
             lines={data.lines}
             selectedLine={selectedLine}
+            journeyOpen={journeyOpen}
+            journeyFrom={journeyFrom}
+            journeyTo={journeyTo}
+            journeyStations={journeyStations}
+            journeyRoute={journeyRoute}
+            onJourneyOpen={openJourney}
+            onJourneyFromChange={setJourneyFrom}
+            onJourneyToChange={setJourneyTo}
             runIndex={runIndex}
             onRunChange={selectRun}
             direction={direction}
@@ -418,12 +479,13 @@ export default function App() {
             onStart={startGame}
           />
         ) : null}
-        {mapModel && screen === "game" && selectedLine && stations.length ? (
+        {mapModel && screen === "game" && activeLine && stations.length ? (
           <GameScreen
             t={t}
             locale={locale}
             mapModel={mapModel}
-            line={selectedLine}
+            line={activeLine}
+            overlayRoute={journeyRoute}
             stations={stations}
             mode={mode}
             stationIndex={stationIndex}
@@ -448,7 +510,7 @@ export default function App() {
             elapsed={elapsed}
             completed={completed}
             metrics={metrics}
-            lineColor={selectedLine?.color}
+            lineColor={activeLine?.color}
             onRetry={startGame}
             onBack={backToHome}
           />
