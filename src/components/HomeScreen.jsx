@@ -1,5 +1,11 @@
-import { useEffect } from "react";
-import { ArrowLeftRight, ChevronLeft, Play } from "lucide-react";
+import { useEffect, useState } from "react";
+import {
+  ArrowLeftRight,
+  ChevronDown,
+  ChevronLeft,
+  ChevronUp,
+  Play,
+} from "lucide-react";
 import { HKMap } from "./HKMap";
 import { getRouteViewBox, JOURNEY_COLOR, MAP_VIEWBOX } from "../lib/map";
 import {
@@ -53,6 +59,7 @@ export function HomeScreen({
       ? getPlayableStations(selectedLine, runIndex, direction)
       : [];
   const journeyReady = journeyOpen && journeyStations.length > 1;
+  const [collapsed, setCollapsed] = useState(false);
 
   // Keyboard flow: opening journey mode lands you straight in the picker.
   useEffect(() => {
@@ -134,7 +141,16 @@ export function HomeScreen({
           {t("mapCredit")}
         </a>
       </p>
-      <div className="island">
+      <div className={`island${collapsed ? " collapsed" : ""}`}>
+        <button
+          type="button"
+          className="island-handle"
+          aria-expanded={!collapsed}
+          aria-label={collapsed ? t("expandPanel") : t("collapsePanel")}
+          onClick={() => setCollapsed((value) => !value)}
+        >
+          {collapsed ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+        </button>
         {!selectedLine && !journeyOpen ? (
           <>
             <div className="island-title">

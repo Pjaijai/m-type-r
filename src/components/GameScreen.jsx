@@ -1,5 +1,5 @@
-import { useMemo } from "react";
-import { ChevronLeft } from "lucide-react";
+import { useMemo, useState } from "react";
+import { ChevronDown, ChevronLeft, ChevronUp } from "lucide-react";
 import { HKMap } from "./HKMap";
 import { getRouteViewBox } from "../lib/map";
 import { TYPING_LANGUAGES } from "../lib/typing";
@@ -37,6 +37,7 @@ export function GameScreen({
     [stations, stationIndex],
   );
   const targetCharacters = [...target];
+  const [collapsed, setCollapsed] = useState(false);
 
   return (
     /* The click handler only refocuses the hidden IME input for phones. */
@@ -87,7 +88,16 @@ export function GameScreen({
           )}
         </div>
       </div>
-      <div className="island game-island">
+      <div className={`island game-island${collapsed ? " collapsed" : ""}`}>
+        <button
+          type="button"
+          className="island-handle"
+          aria-expanded={!collapsed}
+          aria-label={collapsed ? t("expandPanel") : t("collapsePanel")}
+          onClick={() => setCollapsed((value) => !value)}
+        >
+          {collapsed ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+        </button>
         <div className="game-stats">
           <div>
             <small>{metrics.speedUnit}</small>
