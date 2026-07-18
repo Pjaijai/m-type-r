@@ -345,7 +345,7 @@ export default function App() {
         onCompositionEnd={handleCompositionEnd}
       />
       {showChrome ? (
-        <header className="topbar">
+        <header className={`topbar${screen === "home" ? " floating" : ""}`}>
           <button
             type="button"
             className="brand"
@@ -454,7 +454,7 @@ export default function App() {
           />
         ) : null}
       </main>
-      {showChrome ? (
+      {screen === "result" ? (
         <footer>
           <div className="footer-brand">
             <span className="footer-wordmark">{t("appName")}</span>

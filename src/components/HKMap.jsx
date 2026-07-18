@@ -1,4 +1,33 @@
+import { useEffect, useRef, useState } from "react";
 import { pointsToString } from "../lib/map";
+
+const ZOOM_MS = 550;
+
+// Animates viewBox changes so selecting a line glides into its route
+// instead of jumping. Starts at the target, so mounting never animates.
+function useAnimatedViewBox(target) {
+  const [current, setCurrent] = useState(target);
+  const currentRef = useRef(target);
+  const frameRef = useRef(0);
+  const key = target.join(",");
+  useEffect(() => {
+    const from = currentRef.current;
+    const to = key.split(",").map(Number);
+    if (from.every((value, i) => value === to[i])) return undefined;
+    const startedAt = performance.now();
+    const tick = (now) => {
+      const t = Math.min((now - startedAt) / ZOOM_MS, 1);
+      const eased = 1 - (1 - t) ** 3;
+      const next = from.map((value, i) => value + (to[i] - value) * eased);
+      currentRef.current = next;
+      setCurrent(next);
+      if (t < 1) frameRef.current = requestAnimationFrame(tick);
+    };
+    frameRef.current = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(frameRef.current);
+  }, [key]);
+  return current;
+}
 
 export function HKMap({
   mapModel,
@@ -10,7 +39,7 @@ export function HKMap({
   completedStationIds = null,
   className = "",
 }) {
-  const [x, y, width, height] = viewBox;
+  const [x, y, width, height] = useAnimatedViewBox(viewBox);
   const selectedRoute =
     mapModel.routes.find((route) => route.id === selectedLineId) ?? null;
   const hasSelection = Boolean(selectedRoute);
