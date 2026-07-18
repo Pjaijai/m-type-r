@@ -95,7 +95,7 @@ export const STRINGS = {
     station: "下一站",
     completedStations: "完成站數",
     timeLeft: "剩餘時間",
-    elapsed: "經過時間",
+    elapsed: "時間",
     accuracy: "正確率",
     resultTitle: "已到達終點站",
     retry: "再玩一次",

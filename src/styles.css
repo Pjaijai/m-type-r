@@ -107,11 +107,9 @@ main {
 }
 
 .brand-mark {
-  width: 22px;
-  height: 22px;
-  border-radius: 7px;
-  background:
-    linear-gradient(135deg, #e60012 0 25%, #0075c2 25% 50%, #00a040 50% 75%, #f7943e 75%);
+  width: 24px;
+  height: 24px;
+  display: block;
 }
 
 .top-actions {

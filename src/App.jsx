@@ -496,7 +496,7 @@ export default function App() {
               backToHome();
             }}
           >
-            <span className="brand-mark" aria-hidden="true" />
+            <img className="brand-mark" src="/favicon.svg" alt="" />
             <span>{t("appName")}</span>
           </button>
           <div className="top-actions">
