@@ -605,7 +605,14 @@ footer a {
   padding: 14px 20px;
 }
 
+.game-top-right {
+  display: flex;
+  align-items: stretch;
+  gap: 8px;
+}
+
 .game-top .back-button,
+.game-top .sound-button,
 .game-line,
 .game-timer {
   background: color-mix(in srgb, var(--surface) 80%, transparent);

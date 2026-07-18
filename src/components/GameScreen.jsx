@@ -1,5 +1,11 @@
 import { useMemo, useState } from "react";
-import { ChevronDown, ChevronLeft, ChevronUp } from "lucide-react";
+import {
+  ChevronDown,
+  ChevronLeft,
+  ChevronUp,
+  Volume2,
+  VolumeX,
+} from "lucide-react";
 import { HKMap } from "./HKMap";
 import { getPairViewBox, getRouteViewBox } from "../lib/map";
 import { TYPING_LANGUAGES } from "../lib/typing";
@@ -23,6 +29,8 @@ export function GameScreen({
   elapsed,
   metrics,
   shake,
+  soundMuted,
+  onToggleSound,
   onBack,
   onFocusTyping,
 }) {
@@ -94,18 +102,33 @@ export function GameScreen({
           </span>
           <strong>{useZh ? line.nameZh : line.nameEn}</strong>
         </div>
-        <div className="game-timer" role="timer">
-          {mode === "timed" ? (
-            <>
-              <small>{t("timeLeft")}</small>
-              <strong>{remaining}s</strong>
-            </>
-          ) : (
-            <>
-              <small>{t("elapsed")}</small>
-              <strong>{elapsed}s</strong>
-            </>
-          )}
+        <div className="game-top-right">
+          <button
+            type="button"
+            className="sound-button"
+            aria-pressed={!soundMuted}
+            aria-label={soundMuted ? t("soundOn") : t("soundOff")}
+            title={soundMuted ? t("soundOn") : t("soundOff")}
+            onClick={(event) => {
+              event.stopPropagation();
+              onToggleSound();
+            }}
+          >
+            {soundMuted ? <VolumeX size={16} /> : <Volume2 size={16} />}
+          </button>
+          <div className="game-timer" role="timer">
+            {mode === "timed" ? (
+              <>
+                <small>{t("timeLeft")}</small>
+                <strong>{remaining}s</strong>
+              </>
+            ) : (
+              <>
+                <small>{t("elapsed")}</small>
+                <strong>{elapsed}s</strong>
+              </>
+            )}
+          </div>
         </div>
       </div>
       <div className={`island game-island${collapsed ? " collapsed" : ""}`}>

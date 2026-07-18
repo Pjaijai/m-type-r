@@ -23,6 +23,17 @@ import {
   translate,
   UI_LOCALES,
 } from "./lib/i18n";
+import {
+  loadMuted,
+  playArrival,
+  playError,
+  playFinish,
+  playKeystroke,
+  setMuted,
+} from "./lib/audio";
+
+const safeStorage = () =>
+  typeof localStorage === "undefined" ? null : localStorage;
 
 const TIMED_MS = 30000;
 
@@ -88,6 +99,14 @@ export default function App() {
   const [dark, setDark] = useState(
     () => window.matchMedia?.("(prefers-color-scheme: dark)").matches ?? false,
   );
+  const [soundMuted, setSoundMuted] = useState(() => loadMuted(safeStorage()));
+
+  const toggleSound = useCallback(() => {
+    setSoundMuted((value) => {
+      setMuted(safeStorage(), !value);
+      return !value;
+    });
+  }, []);
 
   const [stationIndex, setStationIndex] = useState(0);
   const [typedIndex, setTypedIndex] = useState(0);
@@ -232,6 +251,7 @@ export default function App() {
     typingInputRef.current?.blur();
     const ms = performance.now() - startTimeRef.current;
     setElapsedMs(mode === "timed" ? Math.min(ms, TIMED_MS) : ms);
+    playFinish();
     setScreen("result");
   }, [mode, resetTypingInput]);
 
@@ -256,6 +276,7 @@ export default function App() {
       finishGame();
       return;
     }
+    playArrival();
     const nextIndex = (currentIndex + 1) % stations.length;
     typedIndexRef.current = 0;
     stationIndexRef.current = nextIndex;
@@ -273,10 +294,12 @@ export default function App() {
       if (isTypingCharacterMatch(character, expected, typingLanguage)) {
         typedIndexRef.current += 1;
         setCorrect((value) => value + 1);
+        playKeystroke();
         if (typedIndexRef.current >= targetCharacters.length) advanceStation();
         else setTypedIndex(typedIndexRef.current);
       } else {
         setErrors((value) => value + 1);
+        playError();
         setShake(false);
         requestAnimationFrame(() => setShake(true));
         setTimeout(() => setShake(false), 180);
@@ -564,6 +587,8 @@ export default function App() {
             elapsed={elapsed}
             metrics={metrics}
             shake={shake}
+            soundMuted={soundMuted}
+            onToggleSound={toggleSound}
             onBack={backToHome}
             onFocusTyping={() =>
               typingInputRef.current?.focus({ preventScroll: true })
