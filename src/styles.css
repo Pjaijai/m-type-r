@@ -823,6 +823,97 @@ footer a {
 
 /* ---------- responsive ---------- */
 
+/* Keyboard shortcut hints mean nothing on touch screens. */
+@media (pointer: coarse) {
+  .start-hint {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .island {
+    width: calc(100% - 16px);
+    bottom: max(10px, env(safe-area-inset-bottom));
+    padding: 13px 14px;
+    border-radius: 18px;
+  }
+
+  .island-title h1 {
+    font-size: 17px;
+  }
+
+  .island-title p {
+    margin-bottom: 10px;
+    font-size: 12px;
+  }
+
+  .landing-credits {
+    top: max(64px, calc(env(safe-area-inset-top) + 58px));
+    bottom: auto;
+    right: 10px;
+    font-size: 10px;
+  }
+
+  /* Two-row strip that scrolls sideways, so the map stays the hero. */
+  .line-strip {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-rows: repeat(2, auto);
+    justify-content: flex-start;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 4px;
+  }
+
+  .line-pill {
+    white-space: nowrap;
+  }
+
+  .island-head {
+    gap: 8px;
+  }
+
+  .island-head .line-names strong {
+    font-size: 14.5px;
+  }
+
+  .island-head .line-names small {
+    font-size: 11px;
+  }
+
+  .island-head .start-button {
+    padding: 9px 14px;
+    font-size: 13px;
+  }
+
+  .select-group {
+    flex: 1 1 150px;
+    min-width: 0;
+  }
+
+  .station-select {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .game-top {
+    padding: 10px 12px;
+  }
+
+  .game-top .back-label {
+    display: none;
+  }
+
+  .game-line strong,
+  .game-timer {
+    white-space: nowrap;
+  }
+
+  .game-line strong {
+    font-size: 13px;
+  }
+}
+
 @media (max-width: 820px) {
   .island {
     padding: 14px 16px;

@@ -86,7 +86,7 @@ export function HomeScreen({
   );
 
   const stationSelect = (id, value, onChange, label) => (
-    <div className="island-group">
+    <div className="island-group select-group">
       <span className="island-label">{label}</span>
       <select
         id={id}

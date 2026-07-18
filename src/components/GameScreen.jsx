@@ -58,9 +58,14 @@ export function GameScreen({
         />
       </div>
       <div className="game-top">
-        <button type="button" className="back-button" onClick={onBack}>
+        <button
+          type="button"
+          className="back-button"
+          onClick={onBack}
+          aria-label={t("backToLines")}
+        >
           <ChevronLeft size={16} />
-          {t("backToLines")}
+          <span className="back-label">{t("backToLines")}</span>
         </button>
         <div className="game-line">
           <span className="line-chip" style={{ background: line.color }}>
