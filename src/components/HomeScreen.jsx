@@ -125,7 +125,7 @@ export function HomeScreen({
           onSelectLine={onSelect}
           overlayRoute={journeyOpen ? journeyRoute : null}
           activeStationIds={playable.map((station) => station.id)}
-          currentStationId={null}
+          currentStationId={playable[0]?.id ?? null}
         />
       </div>
       <p className="landing-credits">
