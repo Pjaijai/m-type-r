@@ -30,6 +30,8 @@ export const STRINGS = {
     journey: "Journey",
     journeyTitle: "Any two stations",
     journeyHint: "Pick a start and an end — interchanges are routed for you.",
+    journeyKeysHint:
+      "F from · T to · Tab next · L typing · Enter start · Esc back",
     from: "From",
     to: "To",
     pickStation: "Choose a station",
@@ -78,6 +80,8 @@ export const STRINGS = {
     journey: "自由行程",
     journeyTitle: "任意兩站",
     journeyHint: "選擇起點和終點，轉綫會自動規劃。",
+    journeyKeysHint:
+      "F 出發站 · T 終點站 · Tab 下一項 · L 輸入語言 · Enter 開始 · Esc 返回",
     from: "出發站",
     to: "終點站",
     pickStation: "選擇車站",

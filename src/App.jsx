@@ -348,7 +348,11 @@ export default function App() {
       }
       if (screen === "home") {
         if (event.key === "Enter") {
-          if (!onControl && stations.length > 1) startGame();
+          // Enter is inert on a closed select, so let it start the game
+          // there — journey players pick stations without leaving the field.
+          const startAllowed =
+            !onControl || (tag === "SELECT" && journeyOpen);
+          if (startAllowed && stations.length > 1) startGame();
           return;
         }
         if (inFormField || event.metaKey || event.ctrlKey || event.altKey)
@@ -361,6 +365,22 @@ export default function App() {
         if (/^\d$/.test(key) && data) {
           const line = data.lines[key === "0" ? 9 : Number(key) - 1];
           if (line) selectLine(line.id);
+          return;
+        }
+        if (journeyOpen) {
+          if (key === "f") {
+            event.preventDefault();
+            document.getElementById("journey-from")?.focus();
+          } else if (key === "t") {
+            event.preventDefault();
+            document.getElementById("journey-to")?.focus();
+          } else if (key === "l") {
+            setTypingLanguage((value) =>
+              value === TYPING_LANGUAGES.ENGLISH
+                ? TYPING_LANGUAGES.CHINESE
+                : TYPING_LANGUAGES.ENGLISH,
+            );
+          }
           return;
         }
         if (!selectedLineId) return;

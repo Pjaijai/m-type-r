@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { ArrowLeftRight, ChevronLeft, Play } from "lucide-react";
 import { HKMap } from "./HKMap";
 import { getRouteViewBox, JOURNEY_COLOR, MAP_VIEWBOX } from "../lib/map";
@@ -53,6 +54,11 @@ export function HomeScreen({
       : [];
   const journeyReady = journeyOpen && journeyStations.length > 1;
 
+  // Keyboard flow: opening journey mode lands you straight in the picker.
+  useEffect(() => {
+    if (journeyOpen) document.getElementById("journey-from")?.focus();
+  }, [journeyOpen]);
+
   const typingLanguageGroup = (
     <div className="island-group">
       <span className="island-label">{t("typingLanguage")}</span>
@@ -79,10 +85,11 @@ export function HomeScreen({
     </div>
   );
 
-  const stationSelect = (value, onChange, label) => (
+  const stationSelect = (id, value, onChange, label) => (
     <div className="island-group">
       <span className="island-label">{label}</span>
       <select
+        id={id}
         className="station-select"
         value={value}
         onChange={(event) => onChange(event.target.value)}
@@ -201,11 +208,11 @@ export function HomeScreen({
               </button>
             </div>
             <div className="island-controls">
-              {stationSelect(journeyFrom, onJourneyFromChange, t("from"))}
-              {stationSelect(journeyTo, onJourneyToChange, t("to"))}
+              {stationSelect("journey-from", journeyFrom, onJourneyFromChange, t("from"))}
+              {stationSelect("journey-to", journeyTo, onJourneyToChange, t("to"))}
               {typingLanguageGroup}
             </div>
-            <p className="start-hint">{t("startHint")}</p>
+            <p className="start-hint">{t("journeyKeysHint")}</p>
           </>
         ) : null}
         {selectedLine ? (
