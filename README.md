@@ -2,7 +2,8 @@
 
 A typing game powered by real Hong Kong MTR lines and station names.
 以香港港鐵路綫與站名為核心的打字遊戲，靈感來自
-[tw-metro-typing](https://tw-metro-typing.yencheng.dev/)（原創實作，未使用其程式碼）。
+[tw-metro-typing](https://tw-metro-typing.yencheng.dev/) 與日本的
+[電車タイピング](https://densyatyping.com/)（原創實作，未使用其程式碼）。
 
 ## Features
 
