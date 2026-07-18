@@ -289,6 +289,24 @@ footer a {
   pointer-events: none;
 }
 
+.hk-train-body {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.hk-train-body.shake {
+  animation: train-shake 0.18s ease;
+}
+
+@keyframes train-shake {
+  25% {
+    transform: translateY(-1.6px) rotate(-5deg);
+  }
+  75% {
+    transform: translateY(1.6px) rotate(5deg);
+  }
+}
+
 /* ---------- landing ---------- */
 
 .landing {

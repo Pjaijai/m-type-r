@@ -38,6 +38,7 @@ export function HKMap({
   activeStationIds = null,
   currentStationId = null,
   completedStationIds = null,
+  trainShake = false,
   className = "",
 }) {
   const [x, y, width, height] = useAnimatedViewBox(viewBox);
@@ -142,6 +143,7 @@ export function HKMap({
                 angle={angle}
                 scale={width / 700}
                 color={selectedRoute.color}
+                shake={trainShake}
               />
             );
           })()
@@ -152,7 +154,7 @@ export function HKMap({
 
 // A shaded top-down MTR train drawn pointing right and centred on the
 // origin; gradients and a soft shadow give it a pseudo-3D look.
-function TrainMarker({ x, y, angle, scale, color }) {
+function TrainMarker({ x, y, angle, scale, color, shake }) {
   return (
     <g
       className="hk-train"
@@ -160,6 +162,9 @@ function TrainMarker({ x, y, angle, scale, color }) {
         transform: `translate(${x}px, ${y}px) rotate(${angle}deg) scale(${scale})`,
       }}
     >
+      {/* Shake lives on an inner group so it stacks with the position
+          transform instead of fighting it. */}
+      <g className={`hk-train-body${shake ? " shake" : ""}`}>
       <defs>
         <linearGradient id="train-body" x1="0" y1="-7" x2="0" y2="7" gradientUnits="userSpaceOnUse">
           <stop offset="0" stopColor="#fdfdfd" />
@@ -203,6 +208,7 @@ function TrainMarker({ x, y, angle, scale, color }) {
       />
       <circle cx="14.6" cy="-3" r="0.9" fill="#ffe9a8" />
       <circle cx="14.6" cy="3" r="0.9" fill="#ffe9a8" />
+      </g>
     </g>
   );
 }

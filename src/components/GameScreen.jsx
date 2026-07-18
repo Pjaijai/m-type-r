@@ -56,6 +56,7 @@ export function GameScreen({
           activeStationIds={stations.map((s) => s.id)}
           currentStationId={station?.id ?? null}
           completedStationIds={completedIds}
+          trainShake={shake}
         />
       </div>
       <div className="game-top">
