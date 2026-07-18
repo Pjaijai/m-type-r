@@ -53,6 +53,11 @@ Station coordinates are matched from OSM by English name; add entries to
 `data/coordinate-overrides.json` (`{"STATION_CODE": {"lat": ..., "lon": ...}}`)
 to pin any station manually.
 
+## Credits
+
+Created by [Paul Wong](https://www.linkedin.com/in/paulwong169/)
+([Pjaijai](https://github.com/Pjaijai) on GitHub).
+
 ## License
 
 Code is released under the [MIT License](./LICENSE). The map and station

@@ -636,6 +636,17 @@ export default function App() {
                 {t("mapCredit")}
               </a>
             </p>
+            <p>
+              {t("createdByBefore")}
+              <a
+                href="https://www.linkedin.com/in/paulwong169/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Paul Wong
+              </a>
+              {t("createdByAfter")}
+            </p>
             <p>{t("disclaimer")}</p>
           </div>
         </footer>

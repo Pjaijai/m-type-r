@@ -129,6 +129,16 @@ export function HomeScreen({
         />
       </div>
       <p className="landing-credits">
+        {t("createdByBefore")}
+        <a
+          href="https://www.linkedin.com/in/paulwong169/"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Paul Wong
+        </a>
+        {t("createdByAfter")}
+        {" · "}
         <a href="https://opendata.mtr.com.hk/" target="_blank" rel="noreferrer">
           {t("stationsCredit")}
         </a>

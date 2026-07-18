@@ -58,6 +58,8 @@ export const STRINGS = {
     dataCredit: "Data",
     stationsCredit: "MTR Open Data (DATA.GOV.HK)",
     mapCredit: "© OpenStreetMap contributors",
+    createdByBefore: "Created by ",
+    createdByAfter: "",
     disclaimer: "Not an official MTR service. For typing practice only.",
   },
   zh: {
@@ -112,6 +114,8 @@ export const STRINGS = {
     dataCredit: "資料",
     stationsCredit: "港鐵開放數據（DATA.GOV.HK）",
     mapCredit: "© OpenStreetMap 貢獻者",
+    createdByBefore: "由 ",
+    createdByAfter: " 製作",
     disclaimer: "本網站並非港鐵官方服務，僅供打字練習使用。",
   },
 };
