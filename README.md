@@ -53,6 +53,12 @@ Station coordinates are matched from OSM by English name; add entries to
 `data/coordinate-overrides.json` (`{"STATION_CODE": {"lat": ..., "lon": ...}}`)
 to pin any station manually.
 
+## Analytics
+
+Google Analytics 4 loads only when the `VITE_GA_ID` environment variable is
+set to a measurement ID (`G-XXXXXXXXXX`) at build time — e.g. in Vercel
+under Settings → Environment Variables. Without it, no analytics code runs.
+
 ## Credits
 
 Created by [Paul Wong](https://www.linkedin.com/in/paulwong169/)

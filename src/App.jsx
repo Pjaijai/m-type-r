@@ -31,6 +31,7 @@ import {
   playKeystroke,
   setMuted,
 } from "./lib/audio";
+import { trackEvent } from "./lib/analytics";
 
 const safeStorage = () =>
   typeof localStorage === "undefined" ? null : localStorage;
@@ -235,7 +236,19 @@ export default function App() {
     startTimeRef.current = performance.now();
     setScreen("game");
     typingInputRef.current?.focus({ preventScroll: true });
-  }, [resetTypingInput, stations.length]);
+    trackEvent("game_start", {
+      line: journeyOpen ? "journey" : (selectedLineId ?? "unknown"),
+      mode,
+      typing_language: typingLanguage,
+    });
+  }, [
+    journeyOpen,
+    mode,
+    resetTypingInput,
+    selectedLineId,
+    stations.length,
+    typingLanguage,
+  ]);
 
   const backToHome = useCallback(() => {
     gameActiveRef.current = false;
@@ -253,6 +266,10 @@ export default function App() {
     setElapsedMs(mode === "timed" ? Math.min(ms, TIMED_MS) : ms);
     playFinish();
     setScreen("result");
+    trackEvent("game_finish", {
+      mode,
+      elapsed_seconds: Math.round(ms / 1000),
+    });
   }, [mode, resetTypingInput]);
 
   useEffect(() => {
