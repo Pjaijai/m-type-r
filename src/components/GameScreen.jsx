@@ -29,7 +29,7 @@ export function GameScreen({
   const useZh = locale === UI_LOCALES.ZH;
   const route =
     overlayRoute ?? mapModel.routes.find((r) => r.id === line.id);
-  const viewBox = useMemo(() => getRouteViewBox(route), [route]);
+  const viewBox = useMemo(() => getRouteViewBox(route, 320, 64, 0.16), [route]);
   const station = stations[stationIndex];
   const nextStation = stations[(stationIndex + 1) % stations.length];
   const completedIds = useMemo(
@@ -46,6 +46,17 @@ export function GameScreen({
       style={{ "--line-color": line.color }}
       onClick={onFocusTyping}
     >
+      <div className="game-map-bg">
+        <HKMap
+          mapModel={mapModel}
+          viewBox={viewBox}
+          selectedLineId={line.id}
+          overlayRoute={overlayRoute}
+          activeStationIds={stations.map((s) => s.id)}
+          currentStationId={station?.id ?? null}
+          completedStationIds={completedIds}
+        />
+      </div>
       <div className="game-top">
         <button type="button" className="back-button" onClick={onBack}>
           <ChevronLeft size={16} />
@@ -71,72 +82,58 @@ export function GameScreen({
           )}
         </div>
       </div>
-
-      <div className="game-map">
-        <HKMap
-          mapModel={mapModel}
-          viewBox={viewBox}
-          selectedLineId={line.id}
-          overlayRoute={overlayRoute}
-          activeStationIds={stations.map((s) => s.id)}
-          currentStationId={station?.id ?? null}
-          completedStationIds={completedIds}
-        />
-      </div>
-
-      <div className={`typing-panel${shake ? " shake" : ""}`}>
-        <div className="station-names">
-          <small>{t("station")}</small>
-          <h2>
-            {typingLanguage === TYPING_LANGUAGES.CHINESE
-              ? station?.nameZh
-              : station?.nameEn}
-          </h2>
-          <p>
-            {typingLanguage === TYPING_LANGUAGES.CHINESE
-              ? station?.nameEn
-              : station?.nameZh}
-          </p>
-        </div>
-        <div className="target" aria-live="polite">
-          {targetCharacters.map((character, index) => (
-            <span
-              key={index}
-              className={`target-char${index < typedIndex ? " typed" : ""}${
-                index === typedIndex ? " current" : ""
-              }`}
-            >
-              {character === " " ? " " : character}
-            </span>
-          ))}
-        </div>
-        {typingLanguage === TYPING_LANGUAGES.CHINESE ? (
-          <div className="composition">
-            {compositionText || " "}
+      <div className="island game-island">
+        <div className="game-stats">
+          <div>
+            <small>{metrics.speedUnit}</small>
+            <strong>{metrics.speed}</strong>
           </div>
-        ) : null}
-        <p className="tap-hint">{t("tapToType")}</p>
-      </div>
-
-      <div className="game-stats">
-        <div>
-          <small>{metrics.speedUnit}</small>
-          <strong>{metrics.speed}</strong>
+          <div>
+            <small>{t("accuracy")}</small>
+            <strong>{metrics.accuracy}%</strong>
+          </div>
+          <div>
+            <small>{t("completedStations")}</small>
+            <strong>
+              {completed}
+              {mode === "line" ? ` / ${stations.length}` : ""}
+            </strong>
+          </div>
+          <div className="next-station">
+            <small>{useZh ? "下一站" : "Next"}</small>
+            <strong>{useZh ? nextStation?.nameZh : nextStation?.nameEn}</strong>
+          </div>
         </div>
-        <div>
-          <small>{t("accuracy")}</small>
-          <strong>{metrics.accuracy}%</strong>
-        </div>
-        <div>
-          <small>{t("completedStations")}</small>
-          <strong>
-            {completed}
-            {mode === "line" ? ` / ${stations.length}` : ""}
-          </strong>
-        </div>
-        <div className="next-station">
-          <small>{useZh ? "下一站" : "Next"}</small>
-          <strong>{useZh ? nextStation?.nameZh : nextStation?.nameEn}</strong>
+        <div className={`typing-panel${shake ? " shake" : ""}`}>
+          <div className="station-names">
+            <small>{t("station")}</small>
+            <h2>
+              {typingLanguage === TYPING_LANGUAGES.CHINESE
+                ? station?.nameZh
+                : station?.nameEn}
+            </h2>
+            <p>
+              {typingLanguage === TYPING_LANGUAGES.CHINESE
+                ? station?.nameEn
+                : station?.nameZh}
+            </p>
+          </div>
+          <div className="target" aria-live="polite">
+            {targetCharacters.map((character, index) => (
+              <span
+                key={index}
+                className={`target-char${index < typedIndex ? " typed" : ""}${
+                  index === typedIndex ? " current" : ""
+                }`}
+              >
+                {character === " " ? " " : character}
+              </span>
+            ))}
+          </div>
+          {typingLanguage === TYPING_LANGUAGES.CHINESE ? (
+            <div className="composition">{compositionText || " "}</div>
+          ) : null}
+          <p className="tap-hint">{t("tapToType")}</p>
         </div>
       </div>
     </section>

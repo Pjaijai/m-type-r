@@ -71,7 +71,14 @@ export function buildJourneyRoute(mapModel, stationIds) {
   };
 }
 
-export function getRouteViewBox(route, minimumWidth = 320, padding = 48) {
+// verticalOffsetRatio shifts the viewBox down so the route renders above
+// centre — used in-game where the floating island covers the lower third.
+export function getRouteViewBox(
+  route,
+  minimumWidth = 320,
+  padding = 48,
+  verticalOffsetRatio = 0,
+) {
   if (!route) return MAP_VIEWBOX;
   const points = route.segments.flat();
   if (!points.length) return MAP_VIEWBOX;
@@ -85,7 +92,7 @@ export function getRouteViewBox(route, minimumWidth = 320, padding = 48) {
   const height = Math.max(maxY - minY + padding * 2, width * 0.62);
   return [
     (minX + maxX - width) / 2,
-    (minY + maxY - height) / 2,
+    (minY + maxY - height) / 2 + height * verticalOffsetRatio,
     width,
     height,
   ];
