@@ -1,0 +1,1599 @@
+{
+ "network": "mtr",
+ "source": "MTR Corporation open data via DATA.GOV.HK; coordinates © OpenStreetMap contributors (ODbL)",
+ "sourceUrl": "https://opendata.mtr.com.hk/",
+ "lines": [
+  {
+   "id": "MTR-ISL",
+   "code": "ISL",
+   "nameZh": "港島綫",
+   "nameEn": "Island Line",
+   "color": "#0075C2",
+   "stations": [
+    {
+     "id": "KET",
+     "stationId": "KET",
+     "mtrId": "83",
+     "nameZh": "堅尼地城",
+     "nameEn": "Kennedy Town",
+     "sequence": 1,
+     "target": "kennedy town",
+     "lat": 22.2812252,
+     "lon": 114.1283812
+    },
+    {
+     "id": "HKU",
+     "stationId": "HKU",
+     "mtrId": "82",
+     "nameZh": "香港大學",
+     "nameEn": "HKU",
+     "sequence": 2,
+     "target": "hku",
+     "lat": 22.2839758,
+     "lon": 114.1355067
+    },
+    {
+     "id": "SYP",
+     "stationId": "SYP",
+     "mtrId": "81",
+     "nameZh": "西營盤",
+     "nameEn": "Sai Ying Pun",
+     "sequence": 3,
+     "target": "sai ying pun",
+     "lat": 22.2854347,
+     "lon": 114.1426424
+    },
+    {
+     "id": "SHW",
+     "stationId": "SHW",
+     "mtrId": "26",
+     "nameZh": "上環",
+     "nameEn": "Sheung Wan",
+     "sequence": 4,
+     "target": "sheung wan",
+     "lat": 22.2868403,
+     "lon": 114.1521609
+    },
+    {
+     "id": "CEN",
+     "stationId": "CEN",
+     "mtrId": "1",
+     "nameZh": "中環",
+     "nameEn": "Central",
+     "sequence": 5,
+     "target": "central",
+     "lat": 22.2819081,
+     "lon": 114.1591979
+    },
+    {
+     "id": "ADM",
+     "stationId": "ADM",
+     "mtrId": "2",
+     "nameZh": "金鐘",
+     "nameEn": "Admiralty",
+     "sequence": 6,
+     "target": "admiralty",
+     "lat": 22.2786283,
+     "lon": 114.1655238
+    },
+    {
+     "id": "WAC",
+     "stationId": "WAC",
+     "mtrId": "27",
+     "nameZh": "灣仔",
+     "nameEn": "Wan Chai",
+     "sequence": 7,
+     "target": "wan chai",
+     "lat": 22.2775843,
+     "lon": 114.1728604
+    },
+    {
+     "id": "CAB",
+     "stationId": "CAB",
+     "mtrId": "28",
+     "nameZh": "銅鑼灣",
+     "nameEn": "Causeway Bay",
+     "sequence": 8,
+     "target": "causeway bay",
+     "lat": 22.2793889,
+     "lon": 114.1837397
+    },
+    {
+     "id": "TIH",
+     "stationId": "TIH",
+     "mtrId": "29",
+     "nameZh": "天后",
+     "nameEn": "Tin Hau",
+     "sequence": 9,
+     "target": "tin hau",
+     "lat": 22.2822771,
+     "lon": 114.1919173
+    },
+    {
+     "id": "FOH",
+     "stationId": "FOH",
+     "mtrId": "30",
+     "nameZh": "炮台山",
+     "nameEn": "Fortress Hill",
+     "sequence": 10,
+     "target": "fortress hill",
+     "lat": 22.2875631,
+     "lon": 114.1933149
+    },
+    {
+     "id": "NOP",
+     "stationId": "NOP",
+     "mtrId": "31",
+     "nameZh": "北角",
+     "nameEn": "North Point",
+     "sequence": 11,
+     "target": "north point",
+     "lat": 22.2909093,
+     "lon": 114.2007532
+    },
+    {
+     "id": "QUB",
+     "stationId": "QUB",
+     "mtrId": "32",
+     "nameZh": "鰂魚涌",
+     "nameEn": "Quarry Bay",
+     "sequence": 12,
+     "target": "quarry bay",
+     "lat": 22.2881654,
+     "lon": 114.208992
+    },
+    {
+     "id": "TAK",
+     "stationId": "TAK",
+     "mtrId": "33",
+     "nameZh": "太古",
+     "nameEn": "Tai Koo",
+     "sequence": 13,
+     "target": "tai koo",
+     "lat": 22.2846366,
+     "lon": 114.2163223
+    },
+    {
+     "id": "SWH",
+     "stationId": "SWH",
+     "mtrId": "34",
+     "nameZh": "西灣河",
+     "nameEn": "Sai Wan Ho",
+     "sequence": 14,
+     "target": "sai wan ho",
+     "lat": 22.2816305,
+     "lon": 114.2222887
+    },
+    {
+     "id": "SKW",
+     "stationId": "SKW",
+     "mtrId": "35",
+     "nameZh": "筲箕灣",
+     "nameEn": "Shau Kei Wan",
+     "sequence": 15,
+     "target": "shau kei wan",
+     "lat": 22.2791735,
+     "lon": 114.2288415
+    },
+    {
+     "id": "HFC",
+     "stationId": "HFC",
+     "mtrId": "36",
+     "nameZh": "杏花邨",
+     "nameEn": "Heng Fa Chuen",
+     "sequence": 16,
+     "target": "heng fa chuen",
+     "lat": 22.2766726,
+     "lon": 114.2397196
+    },
+    {
+     "id": "CHW",
+     "stationId": "CHW",
+     "mtrId": "37",
+     "nameZh": "柴灣",
+     "nameEn": "Chai Wan",
+     "sequence": 17,
+     "target": "chai wan",
+     "lat": 22.2644535,
+     "lon": 114.237044
+    }
+   ],
+   "segments": [
+    [
+     "KET",
+     "HKU",
+     "SYP",
+     "SHW",
+     "CEN",
+     "ADM",
+     "WAC",
+     "CAB",
+     "TIH",
+     "FOH",
+     "NOP",
+     "QUB",
+     "TAK",
+     "SWH",
+     "SKW",
+     "HFC",
+     "CHW"
+    ]
+   ]
+  },
+  {
+   "id": "MTR-TWL",
+   "code": "TWL",
+   "nameZh": "荃灣綫",
+   "nameEn": "Tsuen Wan Line",
+   "color": "#E60012",
+   "stations": [
+    {
+     "id": "CEN",
+     "stationId": "CEN",
+     "mtrId": "1",
+     "nameZh": "中環",
+     "nameEn": "Central",
+     "sequence": 1,
+     "target": "central",
+     "lat": 22.2819081,
+     "lon": 114.1591979
+    },
+    {
+     "id": "ADM",
+     "stationId": "ADM",
+     "mtrId": "2",
+     "nameZh": "金鐘",
+     "nameEn": "Admiralty",
+     "sequence": 2,
+     "target": "admiralty",
+     "lat": 22.2786283,
+     "lon": 114.1655238
+    },
+    {
+     "id": "TST",
+     "stationId": "TST",
+     "mtrId": "3",
+     "nameZh": "尖沙咀",
+     "nameEn": "Tsim Sha Tsui",
+     "sequence": 3,
+     "target": "tsim sha tsui",
+     "lat": 22.2972598,
+     "lon": 114.1724034
+    },
+    {
+     "id": "JOR",
+     "stationId": "JOR",
+     "mtrId": "4",
+     "nameZh": "佐敦",
+     "nameEn": "Jordan",
+     "sequence": 4,
+     "target": "jordan",
+     "lat": 22.3046653,
+     "lon": 114.1717464
+    },
+    {
+     "id": "YMT",
+     "stationId": "YMT",
+     "mtrId": "5",
+     "nameZh": "油麻地",
+     "nameEn": "Yau Ma Tei",
+     "sequence": 5,
+     "target": "yau ma tei",
+     "lat": 22.3128042,
+     "lon": 114.1705813
+    },
+    {
+     "id": "MOK",
+     "stationId": "MOK",
+     "mtrId": "6",
+     "nameZh": "旺角",
+     "nameEn": "Mong Kok",
+     "sequence": 6,
+     "target": "mong kok",
+     "lat": 22.3193081,
+     "lon": 114.1693742
+    },
+    {
+     "id": "PRE",
+     "stationId": "PRE",
+     "mtrId": "16",
+     "nameZh": "太子",
+     "nameEn": "Prince Edward",
+     "sequence": 7,
+     "target": "prince edward",
+     "lat": 22.3244547,
+     "lon": 114.1683017
+    },
+    {
+     "id": "SSP",
+     "stationId": "SSP",
+     "mtrId": "17",
+     "nameZh": "深水埗",
+     "nameEn": "Sham Shui Po",
+     "sequence": 8,
+     "target": "sham shui po",
+     "lat": 22.3307258,
+     "lon": 114.1623371
+    },
+    {
+     "id": "CSW",
+     "stationId": "CSW",
+     "mtrId": "18",
+     "nameZh": "長沙灣",
+     "nameEn": "Cheung Sha Wan",
+     "sequence": 9,
+     "target": "cheung sha wan",
+     "lat": 22.3355066,
+     "lon": 114.1561596
+    },
+    {
+     "id": "LCK",
+     "stationId": "LCK",
+     "mtrId": "19",
+     "nameZh": "茘枝角",
+     "nameEn": "Lai Chi Kok",
+     "sequence": 10,
+     "target": "lai chi kok",
+     "lat": 22.3373962,
+     "lon": 114.1484136
+    },
+    {
+     "id": "MEF",
+     "stationId": "MEF",
+     "mtrId": "20",
+     "nameZh": "美孚",
+     "nameEn": "Mei Foo",
+     "sequence": 11,
+     "target": "mei foo",
+     "lat": 22.3388901,
+     "lon": 114.1365553
+    },
+    {
+     "id": "LAK",
+     "stationId": "LAK",
+     "mtrId": "21",
+     "nameZh": "茘景",
+     "nameEn": "Lai King",
+     "sequence": 12,
+     "target": "lai king",
+     "lat": 22.3483217,
+     "lon": 114.1260592
+    },
+    {
+     "id": "KWF",
+     "stationId": "KWF",
+     "mtrId": "22",
+     "nameZh": "葵芳",
+     "nameEn": "Kwai Fong",
+     "sequence": 13,
+     "target": "kwai fong",
+     "lat": 22.3568437,
+     "lon": 114.127805
+    },
+    {
+     "id": "KWH",
+     "stationId": "KWH",
+     "mtrId": "23",
+     "nameZh": "葵興",
+     "nameEn": "Kwai Hing",
+     "sequence": 14,
+     "target": "kwai hing",
+     "lat": 22.3631697,
+     "lon": 114.1311989
+    },
+    {
+     "id": "TWH",
+     "stationId": "TWH",
+     "mtrId": "24",
+     "nameZh": "大窩口",
+     "nameEn": "Tai Wo Hau",
+     "sequence": 15,
+     "target": "tai wo hau",
+     "lat": 22.3708174,
+     "lon": 114.1250055
+    },
+    {
+     "id": "TSW",
+     "stationId": "TSW",
+     "mtrId": "25",
+     "nameZh": "荃灣",
+     "nameEn": "Tsuen Wan",
+     "sequence": 16,
+     "target": "tsuen wan",
+     "lat": 22.3737374,
+     "lon": 114.1176402
+    }
+   ],
+   "segments": [
+    [
+     "CEN",
+     "ADM",
+     "TST",
+     "JOR",
+     "YMT",
+     "MOK",
+     "PRE",
+     "SSP",
+     "CSW",
+     "LCK",
+     "MEF",
+     "LAK",
+     "KWF",
+     "KWH",
+     "TWH",
+     "TSW"
+    ]
+   ]
+  },
+  {
+   "id": "MTR-KTL",
+   "code": "KTL",
+   "nameZh": "觀塘綫",
+   "nameEn": "Kwun Tong Line",
+   "color": "#00A040",
+   "stations": [
+    {
+     "id": "WHA",
+     "stationId": "WHA",
+     "mtrId": "85",
+     "nameZh": "黃埔",
+     "nameEn": "Whampoa",
+     "sequence": 1,
+     "target": "whampoa",
+     "lat": 22.3049506,
+     "lon": 114.1895364
+    },
+    {
+     "id": "HOM",
+     "stationId": "HOM",
+     "mtrId": "84",
+     "nameZh": "何文田",
+     "nameEn": "Ho Man Tin",
+     "sequence": 2,
+     "target": "ho man tin",
+     "lat": 22.309515,
+     "lon": 114.1826239
+    },
+    {
+     "id": "YMT",
+     "stationId": "YMT",
+     "mtrId": "5",
+     "nameZh": "油麻地",
+     "nameEn": "Yau Ma Tei",
+     "sequence": 3,
+     "target": "yau ma tei",
+     "lat": 22.3128042,
+     "lon": 114.1705813
+    },
+    {
+     "id": "MOK",
+     "stationId": "MOK",
+     "mtrId": "6",
+     "nameZh": "旺角",
+     "nameEn": "Mong Kok",
+     "sequence": 4,
+     "target": "mong kok",
+     "lat": 22.3193081,
+     "lon": 114.1693742
+    },
+    {
+     "id": "PRE",
+     "stationId": "PRE",
+     "mtrId": "16",
+     "nameZh": "太子",
+     "nameEn": "Prince Edward",
+     "sequence": 5,
+     "target": "prince edward",
+     "lat": 22.3244547,
+     "lon": 114.1683017
+    },
+    {
+     "id": "SKM",
+     "stationId": "SKM",
+     "mtrId": "7",
+     "nameZh": "石硤尾",
+     "nameEn": "Shek Kip Mei",
+     "sequence": 6,
+     "target": "shek kip mei",
+     "lat": 22.3320216,
+     "lon": 114.1688518
+    },
+    {
+     "id": "KOT",
+     "stationId": "KOT",
+     "mtrId": "8",
+     "nameZh": "九龍塘",
+     "nameEn": "Kowloon Tong",
+     "sequence": 7,
+     "target": "kowloon tong",
+     "lat": 22.3370021,
+     "lon": 114.1758588
+    },
+    {
+     "id": "LOF",
+     "stationId": "LOF",
+     "mtrId": "9",
+     "nameZh": "樂富",
+     "nameEn": "Lok Fu",
+     "sequence": 8,
+     "target": "lok fu",
+     "lat": 22.3380228,
+     "lon": 114.187233
+    },
+    {
+     "id": "WTS",
+     "stationId": "WTS",
+     "mtrId": "10",
+     "nameZh": "黃大仙",
+     "nameEn": "Wong Tai Sin",
+     "sequence": 9,
+     "target": "wong tai sin",
+     "lat": 22.341572,
+     "lon": 114.1940089
+    },
+    {
+     "id": "DIH",
+     "stationId": "DIH",
+     "mtrId": "11",
+     "nameZh": "鑽石山",
+     "nameEn": "Diamond Hill",
+     "sequence": 10,
+     "target": "diamond hill",
+     "lat": 22.3396998,
+     "lon": 114.2014422
+    },
+    {
+     "id": "CHH",
+     "stationId": "CHH",
+     "mtrId": "12",
+     "nameZh": "彩虹",
+     "nameEn": "Choi Hung",
+     "sequence": 11,
+     "target": "choi hung",
+     "lat": 22.3349933,
+     "lon": 114.208818
+    },
+    {
+     "id": "KOB",
+     "stationId": "KOB",
+     "mtrId": "13",
+     "nameZh": "九龍灣",
+     "nameEn": "Kowloon Bay",
+     "sequence": 12,
+     "target": "kowloon bay",
+     "lat": 22.3234673,
+     "lon": 114.2140876
+    },
+    {
+     "id": "NTK",
+     "stationId": "NTK",
+     "mtrId": "14",
+     "nameZh": "牛頭角",
+     "nameEn": "Ngau Tau Kok",
+     "sequence": 13,
+     "target": "ngau tau kok",
+     "lat": 22.3154494,
+     "lon": 114.2189603
+    },
+    {
+     "id": "KWT",
+     "stationId": "KWT",
+     "mtrId": "15",
+     "nameZh": "觀塘",
+     "nameEn": "Kwun Tong",
+     "sequence": 14,
+     "target": "kwun tong",
+     "lat": 22.3121269,
+     "lon": 114.2265106
+    },
+    {
+     "id": "LAT",
+     "stationId": "LAT",
+     "mtrId": "38",
+     "nameZh": "藍田",
+     "nameEn": "Lam Tin",
+     "sequence": 15,
+     "target": "lam tin",
+     "lat": 22.3068856,
+     "lon": 114.2330793
+    },
+    {
+     "id": "YAT",
+     "stationId": "YAT",
+     "mtrId": "48",
+     "nameZh": "油塘",
+     "nameEn": "Yau Tong",
+     "sequence": 16,
+     "target": "yau tong",
+     "lat": 22.2977882,
+     "lon": 114.2371593
+    },
+    {
+     "id": "TIK",
+     "stationId": "TIK",
+     "mtrId": "49",
+     "nameZh": "調景嶺",
+     "nameEn": "Tiu Keng Leng",
+     "sequence": 17,
+     "target": "tiu keng leng",
+     "lat": 22.3040753,
+     "lon": 114.2523705
+    }
+   ],
+   "segments": [
+    [
+     "WHA",
+     "HOM",
+     "YMT",
+     "MOK",
+     "PRE",
+     "SKM",
+     "KOT",
+     "LOF",
+     "WTS",
+     "DIH",
+     "CHH",
+     "KOB",
+     "NTK",
+     "KWT",
+     "LAT",
+     "YAT",
+     "TIK"
+    ]
+   ]
+  },
+  {
+   "id": "MTR-TKL",
+   "code": "TKL",
+   "nameZh": "將軍澳綫",
+   "nameEn": "Tseung Kwan O Line",
+   "color": "#7D499D",
+   "stations": [
+    {
+     "id": "NOP",
+     "stationId": "NOP",
+     "mtrId": "31",
+     "nameZh": "北角",
+     "nameEn": "North Point",
+     "sequence": 1,
+     "target": "north point",
+     "lat": 22.2909093,
+     "lon": 114.2007532
+    },
+    {
+     "id": "QUB",
+     "stationId": "QUB",
+     "mtrId": "32",
+     "nameZh": "鰂魚涌",
+     "nameEn": "Quarry Bay",
+     "sequence": 2,
+     "target": "quarry bay",
+     "lat": 22.2881654,
+     "lon": 114.208992
+    },
+    {
+     "id": "YAT",
+     "stationId": "YAT",
+     "mtrId": "48",
+     "nameZh": "油塘",
+     "nameEn": "Yau Tong",
+     "sequence": 3,
+     "target": "yau tong",
+     "lat": 22.2977882,
+     "lon": 114.2371593
+    },
+    {
+     "id": "TIK",
+     "stationId": "TIK",
+     "mtrId": "49",
+     "nameZh": "調景嶺",
+     "nameEn": "Tiu Keng Leng",
+     "sequence": 4,
+     "target": "tiu keng leng",
+     "lat": 22.3040753,
+     "lon": 114.2523705
+    },
+    {
+     "id": "TKO",
+     "stationId": "TKO",
+     "mtrId": "50",
+     "nameZh": "將軍澳",
+     "nameEn": "Tseung Kwan O",
+     "sequence": 5,
+     "target": "tseung kwan o",
+     "lat": 22.307362,
+     "lon": 114.2599197
+    },
+    {
+     "id": "HAH",
+     "stationId": "HAH",
+     "mtrId": "51",
+     "nameZh": "坑口",
+     "nameEn": "Hang Hau",
+     "sequence": 6,
+     "target": "hang hau",
+     "lat": 22.3155713,
+     "lon": 114.2644401
+    },
+    {
+     "id": "POA",
+     "stationId": "POA",
+     "mtrId": "52",
+     "nameZh": "寶琳",
+     "nameEn": "Po Lam",
+     "sequence": 7,
+     "target": "po lam",
+     "lat": 22.3224913,
+     "lon": 114.2579029
+    },
+    {
+     "id": "LHP",
+     "stationId": "LHP",
+     "mtrId": "57",
+     "nameZh": "康城",
+     "nameEn": "LOHAS Park",
+     "sequence": 3,
+     "target": "lohas park",
+     "lat": 22.2955588,
+     "lon": 114.2687519
+    }
+   ],
+   "segments": [
+    [
+     "NOP",
+     "QUB",
+     "YAT",
+     "TIK",
+     "TKO",
+     "HAH",
+     "POA"
+    ],
+    [
+     "NOP",
+     "QUB",
+     "YAT",
+     "TIK",
+     "TKO",
+     "LHP"
+    ]
+   ]
+  },
+  {
+   "id": "MTR-EAL",
+   "code": "EAL",
+   "nameZh": "東鐵綫",
+   "nameEn": "East Rail Line",
+   "color": "#53B7E8",
+   "stations": [
+    {
+     "id": "ADM",
+     "stationId": "ADM",
+     "mtrId": "2",
+     "nameZh": "金鐘",
+     "nameEn": "Admiralty",
+     "sequence": 1,
+     "target": "admiralty",
+     "lat": 22.2786283,
+     "lon": 114.1655238
+    },
+    {
+     "id": "EXC",
+     "stationId": "EXC",
+     "mtrId": "94",
+     "nameZh": "會展",
+     "nameEn": "Exhibition Centre",
+     "sequence": 2,
+     "target": "exhibition centre",
+     "lat": 22.2816132,
+     "lon": 114.1756895
+    },
+    {
+     "id": "HUH",
+     "stationId": "HUH",
+     "mtrId": "64",
+     "nameZh": "紅磡",
+     "nameEn": "Hung Hom",
+     "sequence": 3,
+     "target": "hung hom",
+     "lat": 22.3029008,
+     "lon": 114.182248
+    },
+    {
+     "id": "MKK",
+     "stationId": "MKK",
+     "mtrId": "65",
+     "nameZh": "旺角東",
+     "nameEn": "Mong Kok East",
+     "sequence": 4,
+     "target": "mong kok east",
+     "lat": 22.3221908,
+     "lon": 114.1727088
+    },
+    {
+     "id": "KOT",
+     "stationId": "KOT",
+     "mtrId": "8",
+     "nameZh": "九龍塘",
+     "nameEn": "Kowloon Tong",
+     "sequence": 5,
+     "target": "kowloon tong",
+     "lat": 22.3370021,
+     "lon": 114.1758588
+    },
+    {
+     "id": "TAW",
+     "stationId": "TAW",
+     "mtrId": "67",
+     "nameZh": "大圍",
+     "nameEn": "Tai Wai",
+     "sequence": 6,
+     "target": "tai wai",
+     "lat": 22.3730495,
+     "lon": 114.1784478
+    },
+    {
+     "id": "SHT",
+     "stationId": "SHT",
+     "mtrId": "68",
+     "nameZh": "沙田",
+     "nameEn": "Sha Tin",
+     "sequence": 7,
+     "target": "sha tin",
+     "lat": 22.382999,
+     "lon": 114.187739
+    },
+    {
+     "id": "FOT",
+     "stationId": "FOT",
+     "mtrId": "69",
+     "nameZh": "火炭",
+     "nameEn": "Fo Tan",
+     "sequence": 8,
+     "target": "fo tan",
+     "lat": 22.3952872,
+     "lon": 114.1981079
+    },
+    {
+     "id": "UNI",
+     "stationId": "UNI",
+     "mtrId": "71",
+     "nameZh": "大學",
+     "nameEn": "University",
+     "sequence": 9,
+     "target": "university",
+     "lat": 22.4135688,
+     "lon": 114.2101033
+    },
+    {
+     "id": "TAP",
+     "stationId": "TAP",
+     "mtrId": "72",
+     "nameZh": "大埔墟",
+     "nameEn": "Tai Po Market",
+     "sequence": 10,
+     "target": "tai po market",
+     "lat": 22.4446507,
+     "lon": 114.1706348
+    },
+    {
+     "id": "TWO",
+     "stationId": "TWO",
+     "mtrId": "73",
+     "nameZh": "太和",
+     "nameEn": "Tai Wo",
+     "sequence": 11,
+     "target": "tai wo",
+     "lat": 22.451068,
+     "lon": 114.1610551
+    },
+    {
+     "id": "FAN",
+     "stationId": "FAN",
+     "mtrId": "74",
+     "nameZh": "粉嶺",
+     "nameEn": "Fanling",
+     "sequence": 12,
+     "target": "fanling",
+     "lat": 22.4919895,
+     "lon": 114.1388103
+    },
+    {
+     "id": "SHS",
+     "stationId": "SHS",
+     "mtrId": "75",
+     "nameZh": "上水",
+     "nameEn": "Sheung Shui",
+     "sequence": 13,
+     "target": "sheung shui",
+     "lat": 22.5011624,
+     "lon": 114.1280325
+    },
+    {
+     "id": "LOW",
+     "stationId": "LOW",
+     "mtrId": "76",
+     "nameZh": "羅湖",
+     "nameEn": "Lo Wu",
+     "sequence": 14,
+     "target": "lo wu",
+     "lat": 22.5281768,
+     "lon": 114.1133387
+    },
+    {
+     "id": "LMC",
+     "stationId": "LMC",
+     "mtrId": "78",
+     "nameZh": "落馬洲",
+     "nameEn": "Lok Ma Chau",
+     "sequence": 14,
+     "target": "lok ma chau",
+     "lat": 22.514457,
+     "lon": 114.0656816
+    }
+   ],
+   "segments": [
+    [
+     "ADM",
+     "EXC",
+     "HUH",
+     "MKK",
+     "KOT",
+     "TAW",
+     "SHT",
+     "FOT",
+     "UNI",
+     "TAP",
+     "TWO",
+     "FAN",
+     "SHS",
+     "LOW"
+    ],
+    [
+     "ADM",
+     "EXC",
+     "HUH",
+     "MKK",
+     "KOT",
+     "TAW",
+     "SHT",
+     "FOT",
+     "UNI",
+     "TAP",
+     "TWO",
+     "FAN",
+     "SHS",
+     "LMC"
+    ]
+   ]
+  },
+  {
+   "id": "MTR-TML",
+   "code": "TML",
+   "nameZh": "屯馬綫",
+   "nameEn": "Tuen Ma Line",
+   "color": "#9C2E00",
+   "stations": [
+    {
+     "id": "WKS",
+     "stationId": "WKS",
+     "mtrId": "103",
+     "nameZh": "烏溪沙",
+     "nameEn": "Wu Kai Sha",
+     "sequence": 1,
+     "target": "wu kai sha",
+     "lat": 22.4291305,
+     "lon": 114.2438983
+    },
+    {
+     "id": "MOS",
+     "stationId": "MOS",
+     "mtrId": "102",
+     "nameZh": "馬鞍山",
+     "nameEn": "Ma On Shan",
+     "sequence": 2,
+     "target": "ma on shan",
+     "lat": 22.4248197,
+     "lon": 114.2316139
+    },
+    {
+     "id": "HEO",
+     "stationId": "HEO",
+     "mtrId": "101",
+     "nameZh": "恆安",
+     "nameEn": "Heng On",
+     "sequence": 3,
+     "target": "heng on",
+     "lat": 22.4175056,
+     "lon": 114.2257529
+    },
+    {
+     "id": "TSH",
+     "stationId": "TSH",
+     "mtrId": "100",
+     "nameZh": "大水坑",
+     "nameEn": "Tai Shui Hang",
+     "sequence": 4,
+     "target": "tai shui hang",
+     "lat": 22.4085978,
+     "lon": 114.222803
+    },
+    {
+     "id": "SHM",
+     "stationId": "SHM",
+     "mtrId": "99",
+     "nameZh": "石門",
+     "nameEn": "Shek Mun",
+     "sequence": 5,
+     "target": "shek mun",
+     "lat": 22.387656,
+     "lon": 114.2083191
+    },
+    {
+     "id": "CIO",
+     "stationId": "CIO",
+     "mtrId": "98",
+     "nameZh": "第一城",
+     "nameEn": "City One",
+     "sequence": 6,
+     "target": "city one",
+     "lat": 22.3828819,
+     "lon": 114.2035503
+    },
+    {
+     "id": "STW",
+     "stationId": "STW",
+     "mtrId": "97",
+     "nameZh": "沙田圍",
+     "nameEn": "Sha Tin Wai",
+     "sequence": 7,
+     "target": "sha tin wai",
+     "lat": 22.3770272,
+     "lon": 114.1949872
+    },
+    {
+     "id": "CKT",
+     "stationId": "CKT",
+     "mtrId": "96",
+     "nameZh": "車公廟",
+     "nameEn": "Che Kung Temple",
+     "sequence": 8,
+     "target": "che kung temple",
+     "lat": 22.3747667,
+     "lon": 114.1861755
+    },
+    {
+     "id": "TAW",
+     "stationId": "TAW",
+     "mtrId": "67",
+     "nameZh": "大圍",
+     "nameEn": "Tai Wai",
+     "sequence": 9,
+     "target": "tai wai",
+     "lat": 22.3730495,
+     "lon": 114.1784478
+    },
+    {
+     "id": "HIK",
+     "stationId": "HIK",
+     "mtrId": "90",
+     "nameZh": "顯徑",
+     "nameEn": "Hin Keng",
+     "sequence": 10,
+     "target": "hin keng",
+     "lat": 22.3639588,
+     "lon": 114.1708129
+    },
+    {
+     "id": "DIH",
+     "stationId": "DIH",
+     "mtrId": "11",
+     "nameZh": "鑽石山",
+     "nameEn": "Diamond Hill",
+     "sequence": 11,
+     "target": "diamond hill",
+     "lat": 22.3396998,
+     "lon": 114.2014422
+    },
+    {
+     "id": "KAT",
+     "stationId": "KAT",
+     "mtrId": "91",
+     "nameZh": "啟德",
+     "nameEn": "Kai Tak",
+     "sequence": 12,
+     "target": "kai tak",
+     "lat": 22.3304987,
+     "lon": 114.1993672
+    },
+    {
+     "id": "SUW",
+     "stationId": "SUW",
+     "mtrId": "92",
+     "nameZh": "宋皇臺",
+     "nameEn": "Sung Wong Toi",
+     "sequence": 13,
+     "target": "sung wong toi",
+     "lat": 22.3258962,
+     "lon": 114.1913268
+    },
+    {
+     "id": "TKW",
+     "stationId": "TKW",
+     "mtrId": "93",
+     "nameZh": "土瓜灣",
+     "nameEn": "To Kwa Wan",
+     "sequence": 14,
+     "target": "to kwa wan",
+     "lat": 22.3169748,
+     "lon": 114.1876486
+    },
+    {
+     "id": "HOM",
+     "stationId": "HOM",
+     "mtrId": "84",
+     "nameZh": "何文田",
+     "nameEn": "Ho Man Tin",
+     "sequence": 15,
+     "target": "ho man tin",
+     "lat": 22.309515,
+     "lon": 114.1826239
+    },
+    {
+     "id": "HUH",
+     "stationId": "HUH",
+     "mtrId": "64",
+     "nameZh": "紅磡",
+     "nameEn": "Hung Hom",
+     "sequence": 16,
+     "target": "hung hom",
+     "lat": 22.3029008,
+     "lon": 114.182248
+    },
+    {
+     "id": "ETS",
+     "stationId": "ETS",
+     "mtrId": "80",
+     "nameZh": "尖東",
+     "nameEn": "East Tsim Sha Tsui",
+     "sequence": 17,
+     "target": "east tsim sha tsui",
+     "lat": 22.295561,
+     "lon": 114.1750721
+    },
+    {
+     "id": "AUS",
+     "stationId": "AUS",
+     "mtrId": "111",
+     "nameZh": "柯士甸",
+     "nameEn": "Austin",
+     "sequence": 18,
+     "target": "austin",
+     "lat": 22.3042356,
+     "lon": 114.1666014
+    },
+    {
+     "id": "NAC",
+     "stationId": "NAC",
+     "mtrId": "53",
+     "nameZh": "南昌",
+     "nameEn": "Nam Cheong",
+     "sequence": 19,
+     "target": "nam cheong",
+     "lat": 22.3264283,
+     "lon": 114.153751
+    },
+    {
+     "id": "MEF",
+     "stationId": "MEF",
+     "mtrId": "20",
+     "nameZh": "美孚",
+     "nameEn": "Mei Foo",
+     "sequence": 20,
+     "target": "mei foo",
+     "lat": 22.3388901,
+     "lon": 114.1365553
+    },
+    {
+     "id": "TWW",
+     "stationId": "TWW",
+     "mtrId": "114",
+     "nameZh": "荃灣西",
+     "nameEn": "Tsuen Wan West",
+     "sequence": 21,
+     "target": "tsuen wan west",
+     "lat": 22.3683487,
+     "lon": 114.1099281
+    },
+    {
+     "id": "KSR",
+     "stationId": "KSR",
+     "mtrId": "115",
+     "nameZh": "錦上路",
+     "nameEn": "Kam Sheung Road",
+     "sequence": 22,
+     "target": "kam sheung road",
+     "lat": 22.4348008,
+     "lon": 114.0634151
+    },
+    {
+     "id": "YUL",
+     "stationId": "YUL",
+     "mtrId": "116",
+     "nameZh": "元朗",
+     "nameEn": "Yuen Long",
+     "sequence": 23,
+     "target": "yuen long",
+     "lat": 22.4462228,
+     "lon": 114.0352862
+    },
+    {
+     "id": "LOP",
+     "stationId": "LOP",
+     "mtrId": "117",
+     "nameZh": "朗屏",
+     "nameEn": "Long Ping",
+     "sequence": 24,
+     "target": "long ping",
+     "lat": 22.4476723,
+     "lon": 114.0254488
+    },
+    {
+     "id": "TIS",
+     "stationId": "TIS",
+     "mtrId": "118",
+     "nameZh": "天水圍",
+     "nameEn": "Tin Shui Wai",
+     "sequence": 25,
+     "target": "tin shui wai",
+     "lat": 22.4477032,
+     "lon": 114.0042584
+    },
+    {
+     "id": "SIH",
+     "stationId": "SIH",
+     "mtrId": "119",
+     "nameZh": "兆康",
+     "nameEn": "Siu Hong",
+     "sequence": 26,
+     "target": "siu hong",
+     "lat": 22.4118631,
+     "lon": 113.9788242
+    },
+    {
+     "id": "TUM",
+     "stationId": "TUM",
+     "mtrId": "120",
+     "nameZh": "屯門",
+     "nameEn": "Tuen Mun",
+     "sequence": 27,
+     "target": "tuen mun",
+     "lat": 22.3949474,
+     "lon": 113.9731117
+    }
+   ],
+   "segments": [
+    [
+     "WKS",
+     "MOS",
+     "HEO",
+     "TSH",
+     "SHM",
+     "CIO",
+     "STW",
+     "CKT",
+     "TAW",
+     "HIK",
+     "DIH",
+     "KAT",
+     "SUW",
+     "TKW",
+     "HOM",
+     "HUH",
+     "ETS",
+     "AUS",
+     "NAC",
+     "MEF",
+     "TWW",
+     "KSR",
+     "YUL",
+     "LOP",
+     "TIS",
+     "SIH",
+     "TUM"
+    ]
+   ]
+  },
+  {
+   "id": "MTR-TCL",
+   "code": "TCL",
+   "nameZh": "東涌綫",
+   "nameEn": "Tung Chung Line",
+   "color": "#F7943E",
+   "stations": [
+    {
+     "id": "HOK",
+     "stationId": "HOK",
+     "mtrId": "39",
+     "nameZh": "香港",
+     "nameEn": "Hong Kong",
+     "sequence": 1,
+     "target": "hong kong",
+     "lat": 22.2847168,
+     "lon": 114.1580724
+    },
+    {
+     "id": "KOW",
+     "stationId": "KOW",
+     "mtrId": "40",
+     "nameZh": "九龍",
+     "nameEn": "Kowloon",
+     "sequence": 2,
+     "target": "kowloon",
+     "lat": 22.3049255,
+     "lon": 114.1616003
+    },
+    {
+     "id": "OLY",
+     "stationId": "OLY",
+     "mtrId": "41",
+     "nameZh": "奧運",
+     "nameEn": "Olympic",
+     "sequence": 3,
+     "target": "olympic",
+     "lat": 22.3176972,
+     "lon": 114.1602806
+    },
+    {
+     "id": "NAC",
+     "stationId": "NAC",
+     "mtrId": "53",
+     "nameZh": "南昌",
+     "nameEn": "Nam Cheong",
+     "sequence": 4,
+     "target": "nam cheong",
+     "lat": 22.3264283,
+     "lon": 114.153751
+    },
+    {
+     "id": "LAK",
+     "stationId": "LAK",
+     "mtrId": "21",
+     "nameZh": "茘景",
+     "nameEn": "Lai King",
+     "sequence": 5,
+     "target": "lai king",
+     "lat": 22.3483217,
+     "lon": 114.1260592
+    },
+    {
+     "id": "TSY",
+     "stationId": "TSY",
+     "mtrId": "42",
+     "nameZh": "青衣",
+     "nameEn": "Tsing Yi",
+     "sequence": 6,
+     "target": "tsing yi",
+     "lat": 22.3584969,
+     "lon": 114.1067535
+    },
+    {
+     "id": "SUN",
+     "stationId": "SUN",
+     "mtrId": "54",
+     "nameZh": "欣澳",
+     "nameEn": "Sunny Bay",
+     "sequence": 7,
+     "target": "sunny bay",
+     "lat": 22.3319843,
+     "lon": 114.0289149
+    },
+    {
+     "id": "TUC",
+     "stationId": "TUC",
+     "mtrId": "43",
+     "nameZh": "東涌",
+     "nameEn": "Tung Chung",
+     "sequence": 8,
+     "target": "tung chung",
+     "lat": 22.2892449,
+     "lon": 113.9413739
+    }
+   ],
+   "segments": [
+    [
+     "HOK",
+     "KOW",
+     "OLY",
+     "NAC",
+     "LAK",
+     "TSY",
+     "SUN",
+     "TUC"
+    ]
+   ]
+  },
+  {
+   "id": "MTR-SIL",
+   "code": "SIL",
+   "nameZh": "南港島綫",
+   "nameEn": "South Island Line",
+   "color": "#BAC429",
+   "stations": [
+    {
+     "id": "ADM",
+     "stationId": "ADM",
+     "mtrId": "2",
+     "nameZh": "金鐘",
+     "nameEn": "Admiralty",
+     "sequence": 1,
+     "target": "admiralty",
+     "lat": 22.2786283,
+     "lon": 114.1655238
+    },
+    {
+     "id": "OCP",
+     "stationId": "OCP",
+     "mtrId": "86",
+     "nameZh": "海洋公園",
+     "nameEn": "Ocean Park",
+     "sequence": 2,
+     "target": "ocean park",
+     "lat": 22.2485823,
+     "lon": 114.1743684
+    },
+    {
+     "id": "WCH",
+     "stationId": "WCH",
+     "mtrId": "87",
+     "nameZh": "黃竹坑",
+     "nameEn": "Wong Chuk Hang",
+     "sequence": 3,
+     "target": "wong chuk hang",
+     "lat": 22.2478643,
+     "lon": 114.1675119
+    },
+    {
+     "id": "LET",
+     "stationId": "LET",
+     "mtrId": "88",
+     "nameZh": "利東",
+     "nameEn": "Lei Tung",
+     "sequence": 4,
+     "target": "lei tung",
+     "lat": 22.242195,
+     "lon": 114.1558285
+    },
+    {
+     "id": "SOH",
+     "stationId": "SOH",
+     "mtrId": "89",
+     "nameZh": "海怡半島",
+     "nameEn": "South Horizons",
+     "sequence": 5,
+     "target": "south horizons",
+     "lat": 22.2428421,
+     "lon": 114.1487545
+    }
+   ],
+   "segments": [
+    [
+     "ADM",
+     "OCP",
+     "WCH",
+     "LET",
+     "SOH"
+    ]
+   ]
+  },
+  {
+   "id": "MTR-AEL",
+   "code": "AEL",
+   "nameZh": "機場快綫",
+   "nameEn": "Airport Express",
+   "color": "#007078",
+   "stations": [
+    {
+     "id": "HOK",
+     "stationId": "HOK",
+     "mtrId": "44",
+     "nameZh": "香港",
+     "nameEn": "Hong Kong",
+     "sequence": 1,
+     "target": "hong kong",
+     "lat": 22.2847168,
+     "lon": 114.1580724
+    },
+    {
+     "id": "KOW",
+     "stationId": "KOW",
+     "mtrId": "45",
+     "nameZh": "九龍",
+     "nameEn": "Kowloon",
+     "sequence": 2,
+     "target": "kowloon",
+     "lat": 22.3049255,
+     "lon": 114.1616003
+    },
+    {
+     "id": "TSY",
+     "stationId": "TSY",
+     "mtrId": "46",
+     "nameZh": "青衣",
+     "nameEn": "Tsing Yi",
+     "sequence": 3,
+     "target": "tsing yi",
+     "lat": 22.3584969,
+     "lon": 114.1067535
+    },
+    {
+     "id": "AIR",
+     "stationId": "AIR",
+     "mtrId": "47",
+     "nameZh": "機場",
+     "nameEn": "Airport",
+     "sequence": 4,
+     "target": "airport",
+     "lat": 22.3159212,
+     "lon": 113.9365512
+    },
+    {
+     "id": "AWE",
+     "stationId": "AWE",
+     "mtrId": "56",
+     "nameZh": "博覽館",
+     "nameEn": "AsiaWorld-Expo",
+     "sequence": 5,
+     "target": "asiaworld-expo",
+     "lat": 22.3219881,
+     "lon": 113.9422214
+    }
+   ],
+   "segments": [
+    [
+     "HOK",
+     "KOW",
+     "TSY",
+     "AIR",
+     "AWE"
+    ]
+   ]
+  },
+  {
+   "id": "MTR-DRL",
+   "code": "DRL",
+   "nameZh": "迪士尼綫",
+   "nameEn": "Disneyland Resort Line",
+   "color": "#F173AC",
+   "stations": [
+    {
+     "id": "DIS",
+     "stationId": "DIS",
+     "mtrId": "55",
+     "nameZh": "迪士尼",
+     "nameEn": "Disneyland Resort",
+     "sequence": 1,
+     "target": "disneyland resort",
+     "lat": 22.315392,
+     "lon": 114.0451412
+    },
+    {
+     "id": "SUN",
+     "stationId": "SUN",
+     "mtrId": "54",
+     "nameZh": "欣澳",
+     "nameEn": "Sunny Bay",
+     "sequence": 2,
+     "target": "sunny bay",
+     "lat": 22.3319843,
+     "lon": 114.0289149
+    }
+   ],
+   "segments": [
+    [
+     "DIS",
+     "SUN"
+    ]
+   ]
+  }
+ ]
+}
